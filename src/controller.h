@@ -2,9 +2,10 @@
 #define CONTROLLER_H
 
 #include "game.h"
+#include <memory>
 
 class Controller {
-  Game game;
+  std::unique_ptr<Game> game;
   public:
     void play(std::istream& in, bool initPlayers);
     Controller();

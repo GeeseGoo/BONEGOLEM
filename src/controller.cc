@@ -2,9 +2,10 @@
 #include "game.h"
 #include <string>
 #include <iostream>
+#include <memory>
 using namespace std;
 
-Controller::Controller(): game(game) {}
+Controller::Controller() {}
 
 void Controller::play(istream& in, bool initPlayers) {
   
@@ -12,8 +13,8 @@ void Controller::play(istream& in, bool initPlayers) {
 
   if (initPlayers) {
     string p1, p2;
-    cin >> p1 >> p2;
-
+    in >> p1 >> p2;
+    game = make_unique<Game>(p1, p2);
   }
 
   while (in >> cmd) {

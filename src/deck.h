@@ -4,12 +4,11 @@
 #include <string>
 class Card;
 class Deck {
-  std::vector<Card*> cards;
+  std::vector<std::string> cardNames;
 
   public:
     void shuffle();
-    void add(Card*);
-    Card* pop(int);
-    void loadDeck(std::vector<std::string> cardNames);
+    std::string draw();
+    Deck(const std::vector<std::string>& cardNames);
 };
 #endif
