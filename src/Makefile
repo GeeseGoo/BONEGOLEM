@@ -1,15 +1,21 @@
 CXX = g++
-CXXFLAGS = -std=c++14 -Wall -g -MMD  # MMD auto generates dependencies
+CXXFLAGS = -std=c++14 -Wall -g -MMD
 EXEC = sorcery
-CCFILES = $(wildcard *.cc)
-OBJECTS = $(CCFILES:.cc=.o)
-DEPENDS = $(CCFILES:.cc=.d)
 
-$(EXEC): $(OBJECTS)
-	$(CXX) $(OBJECTS) -o $(EXEC) -lX11
+# Find all .cc files in the current directory and any subdirectories.
+SRCS := $(wildcard *.cc */*.cc)
+OBJS := $(SRCS:.cc=.o)
+DEPS := $(SRCS:.cc=.d)
 
--include $(DEPENDS)
+$(EXEC): $(OBJS)
+	$(CXX) $(OBJS) -o $(EXEC)
+
+# Pattern rule to compile any .cc file found.
+%.o: %.cc
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+-include $(DEPS)
 
 .PHONY: clean
 clean:
-	rm $(EXEC) $(OBJECTS) $(DEPENDS)
+	rm -f $(EXEC) $(OBJS) $(DEPS)

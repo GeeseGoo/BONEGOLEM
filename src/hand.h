@@ -3,11 +3,12 @@
 
 #include <vector>
 #include <memory>
-class Card;
+#include "card.h"
 class Hand {
   std::vector<std::unique_ptr<Card>> cards;
   public:
     void add(std::unique_ptr<Card> Card);
     void pop(int);
+    bool isHandFull() const;
 };
 #endif // HAND_H

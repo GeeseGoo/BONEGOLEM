@@ -2,20 +2,49 @@
 #include "game.h"
 #include <string>
 #include <iostream>
+#include <fstream>
 #include <memory>
+#include "actions/actionLib.h"
 using namespace std;
 
 Controller::Controller() {}
 
-void Controller::play(istream& in, bool initPlayers) {
-  
-  string cmd;
-
-  if (initPlayers) {
+void Controller::init(istream&in, string deck1Name, string deck2Name) {
+  // read in player names
     string p1, p2;
     in >> p1 >> p2;
-    game = make_unique<Game>(p1, p2);
-  }
+    
+    // read deck files
+    vector<string> deck1, deck2; 
+    ifstream f1(deck1Name);
+    ifstream f2(deck2Name);
+
+    if (!f1) {
+      std::cerr << "error with deck1";
+    }
+    if (!f2) {
+      std::cerr << "error with deck2";
+    }
+
+    string line;
+    while(getline(f1, line)) {
+      if (!line.empty()) {
+        deck1.push_back(line);
+      }
+    }
+    while(getline(f2, line)) {
+      if(!line.empty()) {
+        deck2.push_back(line);
+      }
+    }
+
+    game = make_unique<Game>(p1, p2, deck1, deck2);
+    game->action(make_unique<StartTurn>());
+}
+
+void Controller::play(istream& in) {
+  
+  string cmd;
 
   while (in >> cmd) {
     if(cmd == "help") {
@@ -32,7 +61,8 @@ void Controller::play(istream& in, bool initPlayers) {
     }
 
     if (cmd == "end") {
-      cout << "end";
+      game->action(make_unique<EndTurn>());
+      game->action(make_unique<StartTurn>());
     }
 
     if (cmd == "quit") {
