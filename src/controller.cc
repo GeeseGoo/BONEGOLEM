@@ -39,6 +39,10 @@ void Controller::init(istream&in, string deck1Name, string deck2Name) {
     }
 
     game = make_unique<Game>(p1, p2, deck1, deck2);
+    // shuffle decks
+    for (auto& player: game->getPlayers()) {
+      player.shuffle();
+    }
     game->action(make_unique<StartTurn>());
 }
 

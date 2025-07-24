@@ -9,13 +9,13 @@ activePlayer(1) {
   players.emplace_back(Player(name2, deck2));
 }
 
-Player& Game::getPlayer() {
+Player& Game::getActivePlayer() {
   return players[activePlayer];
 }
 
 void Game::nextPlayer() {
   activePlayer = (activePlayer + 1) % playerCount;
-  cout << "Player " << activePlayer + 1 << "'s Turn"<< endl;
+  cout << getActivePlayer().getName() << "'s Turn"<< endl;
 }
 
 void Game::action(std::unique_ptr<Action> action){

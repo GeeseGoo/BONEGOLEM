@@ -13,7 +13,10 @@ class Game {
   const int playerCount = 2;
   public:
     Game(std::string p1, std::string p2, std::vector<std::string> deck1, std::vector<std::string> deck2);
-    Player& getPlayer();
+    Player& getActivePlayer();
+    std::vector<Player>& getPlayers() {
+      return players;
+    }
     void nextPlayer();
     void action(std::unique_ptr<Action> action);
 };

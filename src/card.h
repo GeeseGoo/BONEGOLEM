@@ -5,6 +5,8 @@ class Card {
   std::string name;
   std::string desc;
   
+  public:
+    Card(std::string name): name(name) {};
 };
 
 

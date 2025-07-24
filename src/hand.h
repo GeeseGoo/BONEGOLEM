@@ -7,7 +7,8 @@
 class Hand {
   std::vector<std::unique_ptr<Card>> cards;
   public:
-    void add(std::unique_ptr<Card> Card);
+    void add(std::string card);
+    void add(std::unique_ptr<Card> card);
     void pop(int);
     bool isHandFull() const;
 };
