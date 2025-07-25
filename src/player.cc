@@ -12,3 +12,10 @@ void Player::draw() {
       std::cout << name << " draws a card from their deck" << std::endl;
       hand.add(deck.draw());
     }
+
+void Player::dealDamage(int dmg) {
+  hp -= dmg;
+  if (hp <= 0) {
+    cout << name << " ded";
+  }
+}

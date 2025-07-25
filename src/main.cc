@@ -15,7 +15,7 @@ int main (int argc, char* argv[]) {
         if(string(argv[i]) == "-deck1") {
             deck1 = argv[++i];
         }
-        if(string(argv[i]) == "deck2") {
+        if(string(argv[i]) == "-deck2") {
             deck2 = argv[++i];
         }
     }

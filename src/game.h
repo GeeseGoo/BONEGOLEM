@@ -14,9 +14,12 @@ class Game {
   public:
     Game(std::string p1, std::string p2, std::vector<std::string> deck1, std::vector<std::string> deck2);
     Player& getActivePlayer();
+    Player& getInactivePlayer() {
+      return players[(activePlayer + 1) % playerCount];
+    };
     std::vector<Player>& getPlayers() {
       return players;
-    }
+    };
     void nextPlayer();
     void action(std::unique_ptr<Action> action);
 };

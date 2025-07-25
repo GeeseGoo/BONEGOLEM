@@ -5,6 +5,7 @@
 #include <fstream>
 #include <memory>
 #include "actions/actionLib.h"
+#include <sstream>
 using namespace std;
 
 Controller::Controller() {}
@@ -48,10 +49,18 @@ void Controller::init(istream&in, string deck1Name, string deck2Name) {
 
 void Controller::play(istream& in) {
   
-  string cmd;
+  string line;
 
-  while (in >> cmd) {
-    if(cmd == "help") {
+  while (getline(in, line)) {
+    istringstream iss(line);
+    vector<string> tokens;
+    string token;
+    while (iss >> token) {
+      tokens.push_back(token);
+    }
+    if (tokens.empty()) continue;
+    
+    if(tokens[0] == "help") {
       cout << R"(Commands: help-- Display this message.
  end-- End the current player’s turn.
  quit-- End the game.
@@ -64,36 +73,44 @@ void Controller::play(istream& in) {
  board-- Describe all cards on the board.)" << endl;
     }
 
-    if (cmd == "end") {
+    if (tokens[0] == "end") {
       game->action(make_unique<EndTurn>());
       game->action(make_unique<StartTurn>());
     }
 
-    if (cmd == "quit") {
+    if (tokens[0] == "quit") {
       cout << "quit"<< endl;
     }
-    if (cmd == "draw") {
+    if (tokens[0] == "draw") {
       cout << "draw"<< endl;
     }
-if (cmd == "discard") {
+if (tokens[0] == "discard") {
   cout << "discard"<< endl;
 }
-if (cmd == "attack") {
+if (tokens[0] == "attack") {
+  if (tokens.size() == 2) {
+    game->action(make_unique<AttackPlayer>(std::stoi(tokens[1])));
+  }
+  if(tokens.size() == 3) {}
   cout << "attack"<< endl;
 }
-if (cmd == "play") {
+if (tokens[0] == "play") {
+    if (tokens.size() == 2) {
+    game->action(make_unique<PlayCard>(std::stoi(tokens[1])));
+  }
+  if(tokens.size() == 3) {}
   cout << "play"<< endl;
 }
-if (cmd == "use") {
+if (tokens[0] == "use") {
   cout << "use"<< endl;
 }
-if (cmd == "inspect") {
+if (tokens[0] == "inspect") {
   cout << "inspect"<< endl;
 }
-if (cmd == "hand") {
+if (tokens[0] == "hand") {
   cout << "hand"<< endl;
 }
-if (cmd == "board") {
+if (tokens[0] == "board") {
   cout << "board"<< endl;
 }
   }

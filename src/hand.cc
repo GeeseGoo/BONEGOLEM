@@ -1,5 +1,6 @@
 #include "hand.h"
 #include "lib.h"
+#include "createCard.h"
 using namespace std;
 
 bool Hand::isHandFull() const {
@@ -7,6 +8,6 @@ bool Hand::isHandFull() const {
   return false;
 }
 
-void Hand::add(string card) {
-  cards.emplace_back(make_unique<Card>(card));
+void Hand::add(string cardName) {
+  cards.emplace_back(createCard(cardName));
 }

@@ -9,11 +9,11 @@ class StartTurn: public Action {
   public:
   StartTurn() {}
   void execute(Game &game) override {
+    game.nextPlayer();
     Player &playerRef = game.getActivePlayer();
     if (!playerRef.isHandFull()) {
       playerRef.draw();
     }
-    game.nextPlayer();
   };
 };
 
