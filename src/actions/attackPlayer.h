@@ -3,7 +3,7 @@
 
 #include "action.h"
 #include "../game.h"
-#include "../minion.h"
+#include "../minions/minion.h"
 class AttackPlayer: public Action {
 
   int attackerID;

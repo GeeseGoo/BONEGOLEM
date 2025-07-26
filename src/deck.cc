@@ -3,6 +3,7 @@
 #include <string>
 #include <algorithm>
 #include <random>
+#include "lib.h"
 using namespace std;
 
 Deck::Deck(const vector<string>& cardNames): cardNames(cardNames) {
@@ -16,6 +17,7 @@ void Deck::shuffle() {
 }
 
 string Deck::draw() {
+  if (cardNames.empty()) throw std::runtime_error("Deck is empty");
   string card = cardNames.back();
   cardNames.pop_back();
   return card;

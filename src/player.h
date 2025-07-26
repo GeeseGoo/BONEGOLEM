@@ -40,7 +40,7 @@ class Player {
     void action(Action*);
     bool isHandFull();
     void draw();
-    void dealDamage(int dmg);
+    void takeDamage(int dmg);
     void shuffle() {
       std::cout << "Shuffling " << name << "'s Deck" << std::endl;
       deck.shuffle();

@@ -3,6 +3,7 @@
 
 #include "startTurn.h"
 #include "endTurn.h"
+#include "../minions/minion.h"
 #include "attackMinion.h"
 #include "attackPlayer.h"
 #include "playcard.h"

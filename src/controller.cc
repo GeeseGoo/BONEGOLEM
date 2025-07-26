@@ -6,7 +6,16 @@
 #include <memory>
 #include "actions/actionLib.h"
 #include <sstream>
+#include <algorithm>
+#include <cctype>
 using namespace std;
+
+void trim(std::string &s) {
+    s.erase(s.begin(), std::find_if(s.begin(), s.end(),
+        [](unsigned char c){ return !std::isspace(c); }));
+    s.erase(std::find_if(s.rbegin(), s.rend(),
+        [](unsigned char c){ return !std::isspace(c); }).base(), s.end());
+}
 
 Controller::Controller() {}
 
@@ -30,11 +39,13 @@ void Controller::init(istream&in, string deck1Name, string deck2Name) {
     string line;
     while(getline(f1, line)) {
       if (!line.empty()) {
+        trim(line);
         deck1.push_back(line);
       }
     }
     while(getline(f2, line)) {
       if(!line.empty()) {
+        trim(line);
         deck2.push_back(line);
       }
     }

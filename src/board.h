@@ -2,7 +2,8 @@
 #define BOARD_H
 
 #include "lib.h"
-#include "minion.h"
+#include "minions/minion.h"
+#include "spells/spell.h"
 #include <string>
 #include <stdexcept>
 #include "card.h"
@@ -14,7 +15,9 @@ void addCard(std::unique_ptr<Card> card) {
     // check if card is minion
     if (Minion* minionRaw = dynamic_cast<Minion*>(card.release())) {
         minions.push_back(std::unique_ptr<Minion>(minionRaw));
-    } else {
+    }
+    
+    else {
         throw std::runtime_error("Card type not found");
     }
 }
@@ -23,6 +26,14 @@ void addCard(std::unique_ptr<Card> card) {
         throw std::runtime_error("no minion at index" + std::to_string(i));
       }
       return *(minions[i]);
+    }
+
+    std::vector<Minion*> getMinions() {
+      std::vector<Minion*> result;
+      for(const auto& ptr: minions) {
+        result.push_back(ptr.get());
+      }
+      return result;
     }
 
 };

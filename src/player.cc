@@ -9,11 +9,12 @@ bool Player::isHandFull() {
 }
 
 void Player::draw() {
-      std::cout << name << " draws a card from their deck" << std::endl;
-      hand.add(deck.draw());
+    auto card = deck.draw();
+    std::cout << name << " draws "<< card<<" from their deck" << std::endl;
+    hand.add(card);
     }
 
-void Player::dealDamage(int dmg) {
+void Player::takeDamage(int dmg) {
   hp -= dmg;
   if (hp <= 0) {
     cout << name << " ded";

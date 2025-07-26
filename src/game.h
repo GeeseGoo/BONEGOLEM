@@ -21,6 +21,7 @@ class Game {
       return players;
     };
     void nextPlayer();
+
     void action(std::unique_ptr<Action> action);
 };
 

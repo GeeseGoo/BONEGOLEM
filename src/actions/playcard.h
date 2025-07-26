@@ -3,7 +3,8 @@
 
 #include "action.h"
 #include "../game.h"
-#include "../minion.h"
+#include "../minions/minion.h"
+#include "../lib.h"
 class PlayCard: public Action {
 
   int cardID;
@@ -12,8 +13,8 @@ class PlayCard: public Action {
     void execute(Game& game) {
       auto &player = game.getActivePlayer();
       auto &hand = player.getHand();
-      auto &board = player.getBoard();
-      board.addCard(std::move(hand.extractCard(cardID)));
+      auto card = hand.extractCard(cardID);
+      card->play(game, std::move(card));
       std::cout << "played card" << std::to_string(cardID) << std::endl;
     };
 };

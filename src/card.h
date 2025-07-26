@@ -9,8 +9,7 @@ class Card {
     std::string name;  
   public:
     Card(std::string name): name(name) {};
-    // not sure why we need this, should be pure virtual?
-    void action(Action* action);
+    virtual void play(Game& game, std::unique_ptr<Card>&& self) = 0;
     virtual ~Card() = 0;
 };
 
