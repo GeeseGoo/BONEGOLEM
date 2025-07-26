@@ -21,11 +21,12 @@ void addCard(std::unique_ptr<Card> card) {
         throw std::runtime_error("Card type not found");
     }
 }
-    Minion& getMinion(int i) {
-      if (!(minions[i])) {
+    Minion* getMinion(int i) {
+      if (minions.size() == 0) throw std::runtime_error("empty board");
+      if (!(minions.at(i))) {
         throw std::runtime_error("no minion at index" + std::to_string(i));
       }
-      return *(minions[i]);
+      return minions[i].get();
     }
 
     std::vector<Minion*> getMinions() {

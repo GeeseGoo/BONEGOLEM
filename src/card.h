@@ -11,6 +11,10 @@ class Card {
     Card(std::string name): name(name) {};
     virtual void play(Game& game, std::unique_ptr<Card>&& self) = 0;
     virtual ~Card() = 0;
+
+    std::string getName() {
+      return name;
+    };
 };
 
 inline Card::~Card() {}

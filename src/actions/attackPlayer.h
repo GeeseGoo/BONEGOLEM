@@ -10,8 +10,8 @@ class AttackPlayer: public Action {
   public:
     AttackPlayer(int attackerID): attackerID(attackerID) {}
     void execute(Game& game) {
-      Minion& attacker = game.getActivePlayer().getBoard().getMinion(attackerID);
-      attacker.attack(game.getInactivePlayer());
+      Minion* attacker = game.getActivePlayer().getBoard().getMinion(attackerID);
+      attacker->attack(game.getInactivePlayer());
     };
 };
 

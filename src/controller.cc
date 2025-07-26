@@ -102,7 +102,10 @@ if (tokens[0] == "attack") {
   if (tokens.size() == 2) {
     game->action(make_unique<AttackPlayer>(std::stoi(tokens[1])));
   }
-  if(tokens.size() == 3) {}
+  if(tokens.size() == 3) {
+    game->action(make_unique<AttackMinion>(std::stoi(tokens[1]), std::stoi(tokens[2])));
+  }
+
   cout << "attack"<< endl;
 }
 if (tokens[0] == "play") {
