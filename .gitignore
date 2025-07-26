@@ -1,4 +1,4 @@
 .vscode/
-src/*.o
-src/*.d
+**/*.o
+**/*.d
 src/sorcery
