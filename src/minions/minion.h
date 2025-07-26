@@ -20,6 +20,10 @@ class Minion: public Card {
           std::cout << name << " is ded"<< std::endl;
         }
     }
+
+    virtual int getAtk() const {return atk;}
+    virtual int getDef() const {return def;}
+    virtual int getActions() const {return actions;}
 };
 
 
