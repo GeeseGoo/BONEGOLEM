@@ -4,22 +4,20 @@
 #include "lib.h"
 #include "minions/minion.h"
 #include "spells/spell.h"
+#include "rituals/ritual.h"
 #include <string>
 #include <stdexcept>
 #include "card.h"
 class Board {
   std::vector<std::unique_ptr<Minion>> minions;
+  std::unique_ptr<Ritual> ritual;
 
   public:
-void addCard(std::unique_ptr<Card> card) {
-    // check if card is minion
-    if (Minion* minionRaw = dynamic_cast<Minion*>(card.release())) {
-        minions.push_back(std::unique_ptr<Minion>(minionRaw));
-    }
-    
-    else {
-        throw std::runtime_error("Card type not found");
-    }
+void addCard(Minion* minion) {
+    minions.emplace_back(std::unique_ptr<Minion>(minion));
+}
+void addCard(Ritual* r) {
+    ritual = std::unique_ptr<Ritual>(r);
 }
     Minion* getMinion(int i) {
       if (minions.size() == 0) throw std::runtime_error("empty board");

@@ -1,6 +1,7 @@
 #include "minion.h"
 #include "../lib.h"
 #include "../player.h"
+#include "../board.h"
 
 using namespace std;
 
@@ -17,5 +18,10 @@ void Minion::attack(Minion& other) {
 Minion::Minion(string name, int def, int atk, int actions):  Card(name), atk(atk), def(def), actions(actions) {}
 
 void Minion::play(Game& game, std::unique_ptr<Card>&& self) {
-  game.getActivePlayer().getBoard().addCard(std::move(self));
+  Card* rawCard = self.release();
+  rawCard->addToBoard(game.getActivePlayer().getBoard());
+}
+
+void Minion::addToBoard(Board& board) {
+  board.addCard(this);
 }

@@ -1,8 +1,10 @@
 #ifndef MINION_H
 #define MINION_H
 
+
 #include "../lib.h"
 #include "../card.h"
+class Board;
 class Player;
 class Game;
 class Minion: public Card {
@@ -20,6 +22,8 @@ class Minion: public Card {
           std::cout << name << " is ded"<< std::endl;
         }
     }
+
+    void addToBoard(Board& board) override;
 
     virtual int getAtk() const {return atk;}
     virtual int getDef() const {return def;}

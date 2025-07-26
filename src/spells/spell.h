@@ -13,6 +13,7 @@ class Spell: public Card {
     void play(Game& game, std::unique_ptr<Card>&& self) {
       execute(game);
     };
+
 };
 
 #endif // SPELL_h

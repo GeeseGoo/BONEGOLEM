@@ -9,7 +9,6 @@
 #include <iostream>
 class Card;
 class Action;
-class Minion;
 class Player {
   int hp;
   std::string name;
@@ -28,23 +27,26 @@ class Player {
       return name;
     };
 
-    Board& getBoard() {
-      return board;
+    void takeDamage(int dmg) {
+        hp -= dmg;
+        if (hp<= 0) {
+          std::cout << name << " is ded"<< std::endl;
+        }
     }
 
     Hand& getHand() {
       return hand;
-    };
+    }
 
+    Board& getBoard();
+
+    void dealDamage(int dmg);
+    
     void addToDeck(std::string card);
     void action(Action*);
     bool isHandFull();
     void draw();
-    void takeDamage(int dmg);
-    void shuffle() {
-      std::cout << "Shuffling " << name << "'s Deck" << std::endl;
-      deck.shuffle();
-    };
+    void shuffle();
 };
 
 #endif // PLAYER_H

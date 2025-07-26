@@ -1,4 +1,5 @@
 #include "player.h"
+#include "board.h"
 
 using namespace std;
 Player::Player(const string& name, const vector<string>& cardNames): name(name), deck(cardNames){
@@ -14,9 +15,12 @@ void Player::draw() {
     hand.add(card);
     }
 
-void Player::takeDamage(int dmg) {
-  hp -= dmg;
-  if (hp <= 0) {
-    cout << name << " ded";
-  }
+
+void Player::shuffle() {
+        std::cout << "Shuffling " << name << "'s Deck" << std::endl;
+      deck.shuffle();
+}
+
+Board& Player::getBoard() {
+  return board;
 }
