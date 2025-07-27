@@ -1,11 +1,13 @@
 #ifndef TRIGGER_H
 #define TRIGGER_H
 
-#include "triggerlib.h"
-#include "../actions/actionLib.h"
-#include "../abilities/ability.h"
 
 class Action;
+class EndTurn;
+class StartTurn;
+class MinionMoves;
+class UseCard;
+class Ability;
 class Trigger {
   protected:
     Ability* ability;

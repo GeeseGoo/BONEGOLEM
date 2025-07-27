@@ -5,6 +5,7 @@
 #include "../lib.h"
 #include "../card.h"
 #include "../triggers/trigger.h"
+
 class Board;
 class Player;
 class Game;

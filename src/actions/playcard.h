@@ -2,21 +2,16 @@
 #define PLAYCARD_h
 
 #include "action.h"
-#include "../game.h"
-#include "../minions/minion.h"
 #include "../lib.h"
+
+class Game;
+
 class PlayCard: public Action {
 
   int cardID;
   public:
     PlayCard(int cardID): cardID(cardID) {}
-    void execute(Game& game) {
-      auto &player = game.getActivePlayer();
-      auto &hand = player.getHand();
-      auto card = hand.extractCard(cardID);
-      card->play(game, std::move(card));
-      std::cout << "played card" << std::to_string(cardID) << std::endl;
-    };
+    void execute(Game& game);
 };
 
 #endif // PLAYCARD_h

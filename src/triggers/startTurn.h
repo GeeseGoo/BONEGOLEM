@@ -7,9 +7,7 @@
 class StartTurnTrigger: public Trigger {
 
   public:
-    void beTriggered(StartTurn* start, Game& game) override {
-      ability->activate(game);
-    };
+    void beTriggered(StartTurn* start, Game& game);
 };
 
 
