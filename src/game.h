@@ -16,6 +16,9 @@ class Game {
   public:
     Game(std::string p1, std::string p2, std::vector<std::string> deck1, std::vector<std::string> deck2);
     Player& getActivePlayer();
+    int getPlayerNum() {
+      return activePlayer + 1;
+    };
     Player& getInactivePlayer() {
       return players[(activePlayer + 1) % playerCount];
     };
@@ -24,7 +27,14 @@ class Game {
     };
     void nextPlayer();
 
+
     void addTrigger(Trigger* trigger);
+
+    void notifyEndTurnTriggers(EndTurn* action) {
+      for (auto trigger: triggers) {
+        trigger->beTriggered(action, *this); 
+}
+    };
 
     const std::vector<Trigger*>& getTriggers() {
       return triggers;

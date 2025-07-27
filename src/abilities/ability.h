@@ -2,9 +2,15 @@
 #define ABILITY_h
 
 class Game;
+class Card;
+class Action;
 class Ability {
+
+  virtual void execute(Game& game, Card* card, Action* action) = 0;
   public:
-    virtual void activate(Game& game) = 0;
+     void activate(Game& game, Card* card, Action* action) {
+      execute(game, card, action);
+     };
 };
 
 

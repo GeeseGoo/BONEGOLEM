@@ -1,6 +1,6 @@
-#include "startTurn.h"
-#include "../abilities/ability.h"
+// #include "startTurn.h"
+// #include "../abilities/ability.h"
 
-void StartTurnTrigger::beTriggered(StartTurn* start, Game& game){
-    ability->activate(game);
-};
+// void StartTurnTrigger::beTriggered(StartTurn* start, Game& game){
+//     ability->activate(game);
+// };

@@ -1,17 +1,20 @@
 #ifndef TRIGGER_H
 #define TRIGGER_H
 
-
+#include "../abilities/ability.h"
+#include "../lib.h"
 class Action;
 class EndTurn;
 class StartTurn;
 class MinionMoves;
 class UseCard;
-class Ability;
+class Card;
 class Trigger {
   protected:
-    Ability* ability;
+    std::unique_ptr<Ability> ability;
+    Card* card;
   public:
+    Trigger(std::unique_ptr<Ability>&& ability, Card* card): ability(std::move(ability)), card(card) {};
     virtual void beTriggered(Action* action, Game& game) {};
     virtual void beTriggered(EndTurn* action, Game& game) {};
     virtual void beTriggered(StartTurn* action, Game& game) {};

@@ -9,7 +9,7 @@ class EndTurn: public Action {
 
   public:
 
-  EndTurn() {}
+  int getPlayerNum() { return playerNum;};
   void execute(Game &game) override;
 };
 

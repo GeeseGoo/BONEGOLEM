@@ -1,8 +1,9 @@
 #include "endTurn.h"
 #include "../game.h"
+#include "../lib.h"
 
 void EndTurn::execute(Game &game) {
-for (auto trigger: game.getTriggers()) {
-    trigger->beTriggered(this, game); 
-}
+    playerNum = game.getPlayerNum();
+    std::cout << "notifying end turn game triggers" << std::endl;
+    game.notifyEndTurnTriggers(this);
 }

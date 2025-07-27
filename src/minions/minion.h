@@ -13,9 +13,9 @@ class Minion: public Card {
   int atk;
   int def;
   int actions;
-  std::unique_ptr<Trigger> ability;
   public:
     Minion(std::string name, int atk, int def, int actions);
+    Minion(std::string name, std::unique_ptr<Trigger> trigger, int atk, int def, int actions);
     void play(Game& game, std::unique_ptr<Card>&& self) override;
     void attack(Minion& other);
     void attack(Player& other);
@@ -24,13 +24,15 @@ class Minion: public Card {
         if (def<= 0) {
           std::cout << name << " is ded"<< std::endl;
         }
-    }
+    };
 
     void addToBoard(Board& board) override;
 
-    virtual int getAtk() const {return atk;}
-    virtual int getDef() const {return def;}
-    virtual int getActions() const {return actions;}
+    virtual int getAtk() const {return atk;};
+    virtual int getDef() const {return def;};
+     void setAtk(int val) {atk = val;};
+     void setDef(int val) {def = val;};
+    virtual int getActions() const {return actions;};
 };
 
 

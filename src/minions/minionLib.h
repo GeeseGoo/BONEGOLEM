@@ -3,6 +3,7 @@
 
 #include "airelemental.h"
 #include "earthelemental.h"
+#include "potionseller.h"
 
 
 #endif // MINIONLIB_H
