@@ -10,6 +10,7 @@
 #include <cctype>
 using namespace std;
 
+// wtf does this do
 void trim(std::string &s) {
     s.erase(s.begin(), std::find_if(s.begin(), s.end(),
         [](unsigned char c){ return !std::isspace(c); }));
@@ -19,12 +20,14 @@ void trim(std::string &s) {
 
 Controller::Controller() {}
 
-void Controller::init(istream&in, string deck1Name, string deck2Name) {
+void Controller::init(istream&in, string deck1Name, string deck2Name, bool isTesting) {
+  // Assign testing state
+    testing = isTesting;
   // read in player names
     string p1, p2;
     in >> p1 >> p2;
     
-    // read deck files
+  // read deck files
     vector<string> deck1, deck2; 
     ifstream f1(deck1Name);
     ifstream f2(deck2Name);
@@ -58,10 +61,11 @@ void Controller::init(istream&in, string deck1Name, string deck2Name) {
     game->action(make_unique<StartTurn>());
 }
 
+// start the main game loop
 void Controller::play(istream& in) {
   
   string line;
-
+  // input management
   while (getline(in, line)) {
     istringstream iss(line);
     vector<string> tokens;

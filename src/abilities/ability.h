@@ -3,8 +3,8 @@
 
 class Game;
 class Ability {
-  
-  virtual void activate(Game& game) = 0;
+  public:
+    virtual void activate(Game& game) = 0;
 };
 
 

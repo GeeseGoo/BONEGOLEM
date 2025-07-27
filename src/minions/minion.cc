@@ -2,6 +2,7 @@
 #include "../lib.h"
 #include "../player.h"
 #include "../board.h"
+#include "../game.h"
 
 using namespace std;
 

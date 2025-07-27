@@ -1,12 +1,12 @@
 #ifndef CARD_h
 #define CARD_h
 #include <string>
-#include "actions/action.h"
 #include "lib.h"
 
 class Board;
+class Game;
+
 class Card {
- 
   protected:
     std::string name;  
   public:
