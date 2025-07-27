@@ -4,6 +4,7 @@
 #include "action.h"
 #include "../deck.h"
 #include "../game.h"
+#include "triggers/trigger.h"
 class EndTurn: public Action {
   int playerNum;
 
@@ -11,6 +12,9 @@ class EndTurn: public Action {
 
   EndTurn() {}
   void execute(Game &game) override {
+    for (auto trigger: game.getTriggers()) {
+      trigger->beTriggered(this); 
+    }
   };
 };
 

@@ -1,5 +1,6 @@
 #include "game.h"
 #include "actions/action.h"
+#include "triggers/trigger.h"
 #include <iostream>
 #include <string>
 using namespace std;
@@ -21,4 +22,8 @@ void Game::nextPlayer() {
 void Game::action(std::unique_ptr<Action> action){
   action->execute(*this);
   actionHistory.push_back(std::move(action));
+}
+
+void Game::addTrigger(Trigger* trigger) {
+  triggers.emplace_back(trigger);
 }

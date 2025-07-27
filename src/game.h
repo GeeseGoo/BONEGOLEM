@@ -6,9 +6,11 @@
 #include "player.h"
 
 #include "actions/action.h"
+class Trigger;
 class Game {
   std::vector<Player> players;
   std::vector<std::unique_ptr<Action>> actionHistory;
+  std::vector<Trigger*> triggers;
   int activePlayer;
   const int playerCount = 2;
   public:
@@ -21,6 +23,12 @@ class Game {
       return players;
     };
     void nextPlayer();
+
+    void addTrigger(Trigger* trigger);
+
+    const std::vector<Trigger*>& getTriggers() {
+      return triggers;
+    };
 
     void action(std::unique_ptr<Action> action);
 };

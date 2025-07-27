@@ -4,6 +4,7 @@
 
 #include "../lib.h"
 #include "../card.h"
+#include "../triggers/trigger.h"
 class Board;
 class Player;
 class Game;
@@ -11,6 +12,7 @@ class Minion: public Card {
   int atk;
   int def;
   int actions;
+  std::unique_ptr<Trigger> ability;
   public:
     Minion(std::string name, int atk, int def, int actions);
     void play(Game& game, std::unique_ptr<Card>&& self) override;
