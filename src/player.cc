@@ -3,6 +3,7 @@
 
 using namespace std;
 Player::Player(const string& name, const vector<string>& cardNames): name(name), deck(cardNames){
+  hand.setPlayer(this);
 }
 
 bool Player::isHandFull() {

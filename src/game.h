@@ -37,8 +37,14 @@ class Game {
     void notifyEndTurnTriggers(EndTurn* action) {
       for (auto trigger: getTriggers()) {
         trigger->beTriggered(action, *this); 
-}
+        }
     };
+
+    void notifyStartTurnTriggers(StartTurn* action) {
+      for (auto trigger: getTriggers()) {
+        trigger->beTriggered(action, *this); 
+        } 
+      };
 
     void addTrigger(Trigger* trigger);
 

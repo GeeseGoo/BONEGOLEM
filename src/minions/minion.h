@@ -14,8 +14,8 @@ class Minion: public Card {
   int def;
   int actions;
   public:
-    Minion(std::string name, int atk, int def, int actions);
-    Minion(std::string name, std::unique_ptr<Trigger> trigger, int atk, int def, int actions);
+    Minion(std::string name, int atk, int def, int actions, Player& player);
+    Minion(std::string name, std::unique_ptr<Trigger> trigger, int atk, int def, int actions, Player& player);
     void play(Game& game, std::unique_ptr<Card>&& self) override;
     void attack(Minion& other);
     void attack(Player& other);

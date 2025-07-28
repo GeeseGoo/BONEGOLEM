@@ -8,9 +8,9 @@
 class PotionSeller: public Minion {
   
   public:
-    PotionSeller(): Minion("Potion Seller", 
+    PotionSeller(Player& player): Minion("Potion Seller", 
       std::make_unique<EndTurnTrigger>(std::make_unique<AllMinionBuff>(0, 1), this),
-      1, 1, 1) {};
+      1, 1, 1, player) {};
 };
 
 #endif // POTIONSELLER_H

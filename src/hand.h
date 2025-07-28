@@ -5,9 +5,13 @@
 #include <memory>
 #include "card.h"
 #include <stdexcept>
+
+class Player;
 class Hand {
   std::vector<std::unique_ptr<Card>> cards;
+  Player* player = nullptr;
   public:
+  Hand();
     void add(std::string cardName);
     void add(std::unique_ptr<Card> card);
     Card& getCard(int i) {
@@ -18,6 +22,7 @@ class Hand {
       return *(cards[i]);
     };
 
+
     std::unique_ptr<Card> extractCard(int i) {
       if (!cards[i]) {
         throw std::runtime_error("Card not found: " + std::to_string(i));
@@ -27,6 +32,8 @@ class Hand {
       cards.erase(cards.begin() + i);
       return card;
     }
+
+    void setPlayer(Player* p);
 
     void pop(int);
     bool isHandFull() const;

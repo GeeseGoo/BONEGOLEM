@@ -2,23 +2,25 @@
 #define CARD_h
 #include <string>
 #include "lib.h"
-#include "triggers/trigger.h"
 
+class Player;
+class Trigger;
 class Board;
 class Game;
 
 
+
 class Card {
   std::unique_ptr<Trigger> trigger;
+  Player& player;
   
   protected:
     std::string name;  
   public:
-    Card(std::string name): name(name) {};
-    Card(std::string name, std::unique_ptr<Trigger> trigger): trigger(std::move(trigger)), name(name) {};
+    Card(std::string name, Player& player);
+    Card(std::string name, std::unique_ptr<Trigger> trigger, Player& player);
 
     virtual void play(Game& game, std::unique_ptr<Card>&& self) = 0;
-    virtual ~Card() = 0;
     virtual void addToBoard(Board& board) {
       throw std::runtime_error("called card.addtoboard");
     };
@@ -27,12 +29,11 @@ class Card {
       return name;
     };
 
-    Trigger* getTrigger() {
-      return trigger.get();
-    };
+    Player& getPlayer() {return player;};
+
+    Trigger* getTrigger();
 };
 
-inline Card::~Card() {}
 
 
 #endif // CARD_h

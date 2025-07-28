@@ -5,7 +5,7 @@
 class EarthElemental: public Minion {
   
   public:
-    EarthElemental(): Minion("Earth Elemental", 1, 1, 1) {};
+    EarthElemental(Player& player): Minion("Earth Elemental", 1, 1, 1, player) {};
 };
 
 #endif // EarthELemental_H

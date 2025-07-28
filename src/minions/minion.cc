@@ -17,11 +17,11 @@ void Minion::attack(Minion& other) {
     other.takeDamage(atk);
 }
 
-Minion::Minion(string name, int def, int atk, int actions):  
-Card(name), atk(atk), def(def), actions(actions) {}
+Minion::Minion(string name, int def, int atk, int actions, Player& player):  
+Card(name, player), atk(atk), def(def), actions(actions) {}
 
-Minion::Minion(string name, unique_ptr<Trigger> trigger, int def, int atk, int actions):  
-Card(name, std::move(trigger)), atk(atk), def(def), actions(actions) {}
+Minion::Minion(string name, unique_ptr<Trigger> trigger, int def, int atk, int actions, Player& player):  
+Card(name, std::move(trigger), player), atk(atk), def(def), actions(actions) {}
 
 
 void Minion::play(Game& game, std::unique_ptr<Card>&& self) {

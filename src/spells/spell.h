@@ -9,7 +9,7 @@ class Spell: public Card {
 
     virtual void execute(Game& game) = 0;
     public:
-    Spell(int cost, std::string name): Card(name), cost(cost) {};
+    Spell(int cost, std::string name, Player& player): Card(name, player), cost(cost) {};
     void play(Game& game, std::unique_ptr<Card>&& self) {
       execute(game);
     };

@@ -10,7 +10,8 @@
 class Card;
 class Action;
 class Player {
-  int hp;
+  int hp = 20;
+  int magic = 0;
   std::string name;
   Deck deck;
   Hand hand;
@@ -28,11 +29,26 @@ class Player {
     };
 
     void takeDamage(int dmg) {
-        hp -= dmg;
-        if (hp<= 0) {
-          std::cout << name << " is ded"<< std::endl;
-        }
-    }
+setHp(hp - dmg);
+    };
+
+    void setHp(int newHp) {
+      hp = newHp;
+      if (hp<= 0) {
+      std::cout << name << " is ded"<< std::endl;
+      }
+    };
+
+    int getMagic() {
+      return magic;
+    };
+
+    void setMagic( int m) {
+      magic = m;
+      if (magic <= 0) {
+        std::cout << name << " out of magic" << std::endl;
+      }
+    };
 
     Hand& getHand() {
       return hand;

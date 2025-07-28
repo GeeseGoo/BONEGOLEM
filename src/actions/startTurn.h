@@ -5,9 +5,11 @@
 class Game;
 
 class StartTurn: public Action {
+  int playerNum;
   public:
   StartTurn() {}
   void execute(Game &game) override;
+  int getPlayerNum() {return playerNum;};
 };
 
 

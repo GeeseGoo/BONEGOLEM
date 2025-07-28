@@ -3,12 +3,12 @@
 
 #include "../abilities/ability.h"
 #include "../lib.h"
+#include "../card.h"
 class Action;
 class EndTurn;
 class StartTurn;
 class MinionMoves;
 class UseCard;
-class Card;
 class Trigger {
   protected:
     std::unique_ptr<Ability> ability;
