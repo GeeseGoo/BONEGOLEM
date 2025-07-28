@@ -5,8 +5,9 @@
 #include "lib.h"
 #include "player.h"
 #include <map>
-
 #include "actions/action.h"
+using namespace std;
+
 class Trigger;
 class Game {
   std::vector<Player> players;
@@ -60,6 +61,10 @@ class Game {
     };
 
     void action(std::unique_ptr<Action> action);
+
+    Minion* getCurrentMinion(int index);
+    Hand* getCurrentHand();
+    vector<Board*> getBoards();
 };
 
 #endif // GAME_H

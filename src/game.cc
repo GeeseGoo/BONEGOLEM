@@ -27,3 +27,15 @@ void Game::action(std::unique_ptr<Action> action){
 void Game::addTrigger(Trigger* trigger) {
       triggers[getPlayerIdx()].emplace_back(trigger);
 }
+
+Hand* Game::getCurrentHand(){
+  return &getActivePlayer().getHand();
+}
+
+vector<Board*> Game::getBoards(){
+  vector<Board*> boards = {};
+  for(unsigned int i = 0; i < players.size(); i++){
+    boards.push_back(&players[i].getBoard());
+  }
+  return boards;
+}

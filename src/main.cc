@@ -1,16 +1,19 @@
 #include "controller.h"
+#include "view/asciiinterpreter.h"
 #include <iostream>
+#include <memory>
 #include <fstream>
 using namespace std;
 
 
 int main (int argc, char* argv[]) {
-    Controller c;
+    AsciiInterpreter v; // View subclass
+    Controller c(&v);
     string initFile;
     string deck1, deck2 = "default.deck";
     bool testing = false;
     for (int i = 1; i < argc; i++) {
-        if (string(argv[i]) == "-init") {
+        if (string(argv[i]) == "-init") { // need to do more here
             initFile = argv[++i];
         }
         if(string(argv[i]) == "-deck1") {

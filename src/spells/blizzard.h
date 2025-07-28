@@ -9,7 +9,7 @@ class Blizzard: public Spell {
   int dmg = 2;
 
   public:
-  Blizzard(Player& player): Spell(3, "Blizzard", player){};
+  Blizzard(Player& player): Spell("Blizzard", 3, player){};
 
   void execute(Game& game) override {
     auto &players = game.getPlayers();
@@ -20,6 +20,7 @@ class Blizzard: public Spell {
       }
     }
   }
+  std::string description() override {return "Deal 2 damage to all minions.";}
 };
 
 

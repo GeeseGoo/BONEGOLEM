@@ -15,10 +15,11 @@ class Card {
   Player& player;
   
   protected:
-    std::string name;  
+    std::string name; 
+    int cost; 
   public:
-    Card(std::string name, Player& player);
-    Card(std::string name, std::unique_ptr<Trigger> trigger, Player& player);
+    Card(std::string name, int cost, Player& player);
+    Card(std::string name, int cost, std::unique_ptr<Trigger> trigger, Player& player);
 
     virtual void play(Game& game, std::unique_ptr<Card>&& self) = 0;
     virtual void addToBoard(Board& board) {
@@ -28,6 +29,12 @@ class Card {
     std::string getName() {
       return name;
     };
+    int getCost() {return cost;}
+    virtual std::string getBottomLeft() = 0;
+    virtual std::string getBottomRight() = 0;
+    virtual std::string getTopLeft() = 0;
+    virtual std::string description() = 0;
+
 
     Player& getPlayer() {return player;};
 

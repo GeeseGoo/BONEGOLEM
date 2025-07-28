@@ -19,6 +19,17 @@ void Ritual::play(Game& game, std::unique_ptr<Card>&& self) {
       board.addCard(this);
     }
 
-Ritual::Ritual(std::string name, std::unique_ptr<Trigger> trigger, Player& player): Card(name, std::move(trigger), player) {};
+Ritual::Ritual(std::string name, int cost, std::unique_ptr<Trigger> trigger, Player& player, int initialCharges, int ritualCost): Card(name, cost, std::move(trigger), player), charges{initialCharges}, ritualCost{ritualCost} {};
+
+string Ritual::getBottomLeft(){
+  return "";
+}
+string Ritual::getBottomRight(){
+  return to_string(charges);
+}
+string Ritual::getTopLeft(){
+  return to_string(ritualCost);
+}
+
 
 // Ritual::~Ritual() {}

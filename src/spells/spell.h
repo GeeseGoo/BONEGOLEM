@@ -5,15 +5,15 @@
 #include "../game.h"
 
 class Spell: public Card {
-    int cost;
-
     virtual void execute(Game& game) = 0;
     public:
-    Spell(int cost, std::string name, Player& player): Card(name, player), cost(cost) {};
+    Spell(std::string name, int cost, Player& player): Card(name, cost, player) {};
     void play(Game& game, std::unique_ptr<Card>&& self) {
       execute(game);
     };
-
+    std::string getBottomLeft() override {return "";}
+    std::string getBottomRight() override {return "";}
+    std::string getTopLeft() override {return "";}
 };
 
 #endif // SPELL_h

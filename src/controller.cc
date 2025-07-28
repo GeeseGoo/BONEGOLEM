@@ -1,5 +1,6 @@
 #include "controller.h" 
 #include "game.h"
+#include "view/view.h"
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -18,7 +19,7 @@ void trim(std::string &s) {
         [](unsigned char c){ return !std::isspace(c); }).base(), s.end());
 }
 
-Controller::Controller() {}
+Controller::Controller(View* view): view{view} {}
 
 void Controller::init(istream&in, string deck1Name, string deck2Name, bool isTesting) {
   // Assign testing state
@@ -54,6 +55,8 @@ void Controller::init(istream&in, string deck1Name, string deck2Name, bool isTes
     }
 
     game = make_unique<Game>(p1, p2, deck1, deck2);
+    // give view access to the game
+    view->assignGame(game.get());
     // shuffle decks
     for (auto& player: game->getPlayers()) {
       player.shuffle();
@@ -123,13 +126,13 @@ if (tokens[0] == "use") {
   cout << "use"<< endl;
 }
 if (tokens[0] == "inspect") {
-  cout << "inspect"<< endl;
+  view->displayMinion(std::stoi(tokens[1]));
 }
 if (tokens[0] == "hand") {
-  cout << "hand"<< endl;
+  view->displayHand();
 }
 if (tokens[0] == "board") {
-  cout << "board"<< endl;
+  view->displayBoard();
 }
   }
 }

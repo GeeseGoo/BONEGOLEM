@@ -12,6 +12,9 @@ class GiantStrength: public Enchantment {
   int getDef() const override {
     return (*next).getDef() + 2;
   };
+  std::string getBottomLeft() override {return "+2";}
+  std::string getBottomRight() override {return "+2";}
+  std::string description() override {return "";}
 };
 
 

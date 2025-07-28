@@ -13,11 +13,11 @@ void Board::addCard(Ritual* r) {
     ritual = std::unique_ptr<Ritual>(r);
 }
 Minion* Board::getMinion(int i) {
-    if (minions.size() == 0) throw std::runtime_error("empty board");
+    if (minions.size() <= i) throw std::runtime_error("empty board");
     if (!(minions.at(i))) {
     throw std::runtime_error("no minion at index" + std::to_string(i));
     }
-    return minions[i].get();
+    return minions.at(i).get();
 }
 
 std::vector<Minion*> Board::getMinions() {
