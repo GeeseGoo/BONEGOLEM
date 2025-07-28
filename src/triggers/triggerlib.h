@@ -2,8 +2,9 @@
 #define TRIGGERLIB_H
 
 #include "endturn.h"
-#include "startturn.h"
+#include "startturntrigger.h"
+#include "minionleavestrigger.h"
+#include "minionenterstrigger.h"
 #include "usecard.h"
-#include "minionmoves.h"
 
 #endif // TRIGGERLIB_H

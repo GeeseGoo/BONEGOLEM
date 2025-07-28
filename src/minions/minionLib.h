@@ -4,6 +4,6 @@
 #include "airelemental.h"
 #include "earthelemental.h"
 #include "potionseller.h"
-
+#include "bonegolem.h"
 
 #endif // MINIONLIB_H

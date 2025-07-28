@@ -6,5 +6,6 @@
 #include "attackMinion.h"
 #include "attackPlayer.h"
 #include "playcard.h"
+#include "leaveplay.h"
 
 #endif // ACTIONLIB_H
