@@ -16,6 +16,9 @@ class Board {
     void addCard(Ritual* r);
     Minion* getMinion(int i);
     std::vector<Minion*> getMinions();
+    Ritual* getRitual() {
+      return ritual.get();
+    };
 };
 
 

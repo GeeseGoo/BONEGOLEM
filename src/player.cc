@@ -24,3 +24,4 @@ void Player::shuffle() {
 Board& Player::getBoard() {
   return board;
 }
+

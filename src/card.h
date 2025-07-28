@@ -13,7 +13,6 @@ class Card {
   
   protected:
     std::string name;  
-    Board* boardPtr;
   public:
     Card(std::string name): name(name) {};
     Card(std::string name, std::unique_ptr<Trigger> trigger): trigger(std::move(trigger)), name(name) {};

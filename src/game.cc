@@ -25,5 +25,5 @@ void Game::action(std::unique_ptr<Action> action){
 }
 
 void Game::addTrigger(Trigger* trigger) {
-  triggers.emplace_back(trigger);
+      triggers[getPlayerIdx()].emplace_back(trigger);
 }

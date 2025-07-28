@@ -27,12 +27,11 @@ Card(name, std::move(trigger)), atk(atk), def(def), actions(actions) {}
 void Minion::play(Game& game, std::unique_ptr<Card>&& self) {
   // add trigger to game
   game.addTrigger(this->getTrigger());
-  
+
   Card* rawCard = self.release();
   rawCard->addToBoard(game.getActivePlayer().getBoard());
 }
 
 void Minion::addToBoard(Board& board) {
-  boardPtr = &board;
   board.addCard(this);
 }
