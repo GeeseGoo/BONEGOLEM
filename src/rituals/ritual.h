@@ -22,6 +22,7 @@ class Ritual: public Card {
     std::string getBottomLeft() override;
     std::string getBottomRight() override;
     std::string getTopLeft() override;
+    std::string getType() override {return "Ritual";}
 
     // WHY DOES THIS BREAK STUFF?
     // virtual ~Ritual() = 0;
