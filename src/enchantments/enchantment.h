@@ -4,15 +4,22 @@
 #include "../lib.h"
 #include "../minions/minion.h"
 
-class Enchantment: public Minion {
-  protected:
-    std::unique_ptr<Minion> next;
+class Enchantment : public Minion
+{
+protected:
+  std::unique_ptr<Minion> next;
 
-  public:
-    Enchantment(std::string name, int cost, std::unique_ptr<Minion>&& minion, Player& player): Minion(name, cost, 0, 0, 0, player), next(std::move(minion)) {};
-    virtual Minion* getNext() = 0;
-  std::string getTopLeft() override {return "";};
+public:
+  Enchantment(std::string name, int cost, std::unique_ptr<Minion> &&minion, Player &player) : Minion(name, cost, 0, 0, 0, player), next(std::move(minion)) {};
+  void play(Game &game, std::unique_ptr<Card> &&self, Player &player) override {
+
+  };
+  virtual Minion *getNext() = 0;
+  void setNext(std::unique_ptr<Minion> &&minion)
+  {
+    next = std::move(minion);
+  };
+  std::string getTopLeft() override { return ""; };
 };
-
 
 #endif // ENCHANTMENT_H

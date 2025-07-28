@@ -7,7 +7,7 @@
 class Action;
 class EndTurn;
 class StartTurn;
-class PlayCard;
+class EnterPlay;
 class UseCard;
 class Board;
 class LeavePlay;
@@ -22,7 +22,7 @@ public:
   virtual void beTriggered(Action *action, Board &board, Game &game) {};
   virtual void beTriggered(EndTurn *action, Board &board, Game &game) {};
   virtual void beTriggered(StartTurn *action, Board &board, Game &game) {};
-  virtual void beTriggered(PlayCard *action, Board &board, Game &game) {};
+  virtual void beTriggered(EnterPlay *action, Board &board, Game &game) {};
   virtual void beTriggered(LeavePlay *action, Board &board, Game &game) {};
 };
 
