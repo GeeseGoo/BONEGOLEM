@@ -20,6 +20,22 @@ Minion* Board::getMinion(int i) {
     return minions.at(i).get();
 }
 
+void Board::addTrigger(Trigger* trigger) {
+    triggers.emplace_back(trigger);
+}
+
+void Board::notifyStartTurnTriggers(StartTurn* action, Board& board, Game& game) {
+      for (auto trigger: triggers) {
+        trigger->beTriggered(action, *this, game); 
+        } 
+      }
+
+void Board::notifyEndTurnTriggers(EndTurn* action, Board& board, Game& game) {
+      for (auto trigger: triggers) {
+        trigger->beTriggered(action, *this, game); 
+        } 
+}
+
 std::vector<Minion*> Board::getMinions() {
     std::vector<Minion*> result;
     for(const auto& ptr: minions) {

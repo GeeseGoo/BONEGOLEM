@@ -12,7 +12,6 @@ class Trigger;
 class Game {
   std::vector<Player> players;
   std::vector<std::unique_ptr<Action>> actionHistory;
-  std::map<int, std::vector<Trigger*>> triggers = {{0, {}}, {1, {}}};
   int activePlayer;
   const int playerCount = 2;
   public:
@@ -34,31 +33,6 @@ class Game {
       return players;
     };
     void nextPlayer();
-
-    void notifyEndTurnTriggers(EndTurn* action) {
-      for (auto trigger: getTriggers()) {
-        trigger->beTriggered(action, *this); 
-        }
-    };
-
-    void notifyStartTurnTriggers(StartTurn* action) {
-      for (auto trigger: getTriggers()) {
-        trigger->beTriggered(action, *this); 
-        } 
-      };
-
-    void addTrigger(Trigger* trigger);
-
-    const std::vector<Trigger*> getTriggers() {
-      std::vector<Trigger*> allTriggers;
-      for(auto t: triggers[getPlayerIdx()]) {
-        allTriggers.emplace_back(t);
-      }
-      for(auto t: triggers[getInactivePlayerIdx()]) {
-        allTriggers.emplace_back(t);
-      }
-      return allTriggers;
-    };
 
     void action(std::unique_ptr<Action> action);
 

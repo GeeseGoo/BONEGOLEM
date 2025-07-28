@@ -6,10 +6,10 @@
 #include "../lib.h"
 
 
-void Ritual::play(Game& game, std::unique_ptr<Card>&& self) {
+void Ritual::play(Game& game, std::unique_ptr<Card>&& self, Player& player) {
       // add trigger to game
       std::cout << " adding ritual trigger" << std::endl;
-      game.addTrigger(this->getTrigger());
+      player.getBoard().addTrigger(this->getTrigger());
       
       Card* rawCard = self.release();
       rawCard->addToBoard(game.getActivePlayer().getBoard());

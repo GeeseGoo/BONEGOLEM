@@ -24,10 +24,6 @@ void Game::action(std::unique_ptr<Action> action){
   actionHistory.push_back(std::move(action));
 }
 
-void Game::addTrigger(Trigger* trigger) {
-      triggers[getPlayerIdx()].emplace_back(trigger);
-}
-
 Hand* Game::getCurrentHand(){
   return &getActivePlayer().getHand();
 }

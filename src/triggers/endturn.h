@@ -5,15 +5,14 @@
 #include "trigger.h"
 #include "../game.h"
 #include "../lib.h"
+#include "../board.h"
 class EndTurnTrigger: public Trigger {
 
   public:
     EndTurnTrigger(std::unique_ptr<Ability>&& ability, Card* card): Trigger(std::move(ability), card) {};
-    void beTriggered(EndTurn* action, Game& game) override {
+    void beTriggered(EndTurn* action, Board& board, Game& game) override {
 std::cout << "end turn triggered" << std::endl;
-      if (&card->getPlayer() == &game.getActivePlayer()){
         ability->activate(game, card, action);
-      }
     };
 };
 

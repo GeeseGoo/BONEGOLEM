@@ -11,7 +11,7 @@ class Enchantment: public Minion {
   public:
     Enchantment(std::string name, int cost, std::unique_ptr<Minion>&& minion, Player& player): Minion(name, cost, 0, 0, 0, player), next(std::move(minion)) {};
     virtual Minion* getNext() = 0;
-  std::string getTopLeft() override {return ""};
+  std::string getTopLeft() override {return "";};
 };
 
 

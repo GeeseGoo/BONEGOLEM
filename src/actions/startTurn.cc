@@ -10,5 +10,6 @@ if (!playerRef.isHandFull()) {
     playerRef.draw();
 }
 std::cout << "notifying start turn triggers" << std::endl;
-game.notifyStartTurnTriggers(this);
+game.getActivePlayer().getBoard().notifyStartTurnTriggers(this, game.getActivePlayer().getBoard(), game);
+
 };

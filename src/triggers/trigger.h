@@ -9,15 +9,16 @@ class EndTurn;
 class StartTurn;
 class MinionMoves;
 class UseCard;
+class Board;
 class Trigger {
   protected:
     std::unique_ptr<Ability> ability;
     Card* card;
   public:
     Trigger(std::unique_ptr<Ability>&& ability, Card* card): ability(std::move(ability)), card(card) {};
-    virtual void beTriggered(Action* action, Game& game) {};
-    virtual void beTriggered(EndTurn* action, Game& game) {};
-    virtual void beTriggered(StartTurn* action, Game& game) {};
+    virtual void beTriggered(Action* action,Board& board, Game& game) {};
+    virtual void beTriggered(EndTurn* action,Board& board, Game& game) {};
+    virtual void beTriggered(StartTurn* action,Board& board, Game& game) {};
     // virtual void beTriggered(MinionMoves* action) {};
     // virtual void beTriggered(UseCard* action) {};
 };
