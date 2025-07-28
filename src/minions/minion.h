@@ -29,11 +29,12 @@ class Minion: public Card {
 
     void addToBoard(Board& board) override;
 
-    virtual int getAtk() const {return atk;};
-    virtual int getDef() const {return def;};
-     void setAtk(int val) {atk = val;};
-     void setDef(int val) {def = val;};
-    virtual int getActions() const {return actions;};
+    virtual int getAtk() const {return atk;}
+    virtual int getDef() const {return def;}
+    void setAtk(int val) {atk = val;}
+    void setDef(int val) {def = val;}
+    virtual int getActions() const {return actions;}
+    int getAbilityCost() const {return abilityCost;}
     std::string getBottomLeft() override;
     std::string getBottomRight() override;
     std::string getTopLeft() override;

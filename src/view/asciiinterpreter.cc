@@ -8,13 +8,21 @@ using namespace std;
 
 void AsciiInterpreter::displayMinion(int index){
     Minion* minion = game->getActivePlayer().getBoard().getMinion(index);
-    card_template_t output = {""};
-    cout << "Minionn moment: " << minion->getName() << endl;
-    
+    card_template_t output;
+    if(minion->description() == ""){
+        output = display_minion_no_ability(minion->getName(), minion->getCost(), minion->getAtk(), minion->getDef());
+    }else if(minion->getTopLeft() == ""){
+        output = display_minion_triggered_ability(minion->getName(), minion->getCost(), minion->getAtk(), minion->getDef(), minion->description());
+    }else{
+        output = display_minion_activated_ability(minion->getName(), minion->getCost(), minion->getAtk(), minion->getDef(), minion->getAbilityCost(), minion->description());
+    }
+    for(string line : output){
+        cout << line << endl;
+    }
 }
 
 void AsciiInterpreter::displayHand(){
-    // Card& card = game->getActivePlayer().getHand().getCard(0);
+    // Card& card = game->getPlayers().getHand().getCard(0);
     cout << "Hand moment" << endl;
 }
 
