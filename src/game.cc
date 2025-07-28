@@ -1,5 +1,5 @@
 #include "game.h"
-#include "actions/actionlib.h"
+#include "actions/actionLib.h"
 #include "triggers/trigger.h"
 #include <iostream>
 #include <string>
