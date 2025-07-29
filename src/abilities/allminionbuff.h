@@ -12,18 +12,22 @@ class AllMinionBuff : public Ability
 {
   int atkBuff;
   int defBuff;
+  Player* player;
   void execute(Game &game, Card *card, Action *action) override
   {
-    for (auto m : game.getActivePlayer().getBoard().getMinions())
+    if(!player){
+      player = &game.getActivePlayer();
+    }
+    for (auto m : player->getBoard().getMinions())
     {
       std::cout << "buffing minion " << m->getName() << std::endl;
       m->setAtk(m->getAtk() + atkBuff);
-      m->setDef(m->getDef() + defBuff);
+      m->takeDamage(-1 * defBuff);
     }
   };
 
 public:
-  AllMinionBuff(int atkBuff, int defBuff) : atkBuff(atkBuff), defBuff(defBuff) {};
+  AllMinionBuff(int atkBuff, int defBuff, Player* player = nullptr) : atkBuff(atkBuff), defBuff(defBuff), player{player} {};
 };
 
 #endif // ALLMINIONSTATCHANGE_H

@@ -4,6 +4,7 @@
 #include "../board.h"
 #include "../game.h"
 #include "../triggers/trigger.h"
+#include "../actions/enterplay.h"
 using namespace std;
 
 void Minion::attack(Player &other)
@@ -22,9 +23,10 @@ Minion::Minion(string name, int cost, int def, int atk, int actions, Player &pla
 
 Minion::Minion(string name, int cost, unique_ptr<Trigger> trigger, int def, int atk, int actions, Player &player) : Card(name, cost, std::move(trigger), player), atk(atk), def(def), actions(actions) {}
 
-void Minion::play(Game &game, Player &player, int onto)
+void Minion::play(Game &game, Player &player, EnterPlay* action)
 {
   // add trigger to game
+  action->iAmMinion();
   player.getBoard().addTrigger(this->getTrigger());
   game.getActivePlayer().getBoard().addCard(this);
 }

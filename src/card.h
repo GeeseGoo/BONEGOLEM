@@ -8,7 +8,7 @@ class Trigger;
 class Board;
 class Game;
 
-
+class EnterPlay;
 
 class Card {
   std::unique_ptr<Trigger> trigger;
@@ -21,7 +21,7 @@ class Card {
     Card(std::string name, int cost, Player& player);
     Card(std::string name, int cost, std::unique_ptr<Trigger> trigger, Player& player);
 
-    virtual void play(Game& game, Player& player, int onto) = 0;
+    virtual void play(Game &game, Player &player, EnterPlay* action) = 0;
 
     std::string getName() {
       return name;

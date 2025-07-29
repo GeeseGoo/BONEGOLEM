@@ -6,7 +6,7 @@
 #include "../lib.h"
 
 
-void Ritual::play(Game& game, Player& player, int onto) {
+void Ritual::play(Game &game, Player &player, EnterPlay* action) {
       // add trigger to game
       player.getBoard().addTrigger(this->getTrigger());
       game.getActivePlayer().getBoard().addCard(this);

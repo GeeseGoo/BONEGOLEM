@@ -8,9 +8,9 @@ class Ability {
 
   virtual void execute(Game& game, Card* card, Action* action) = 0;
   public:
-     void activate(Game& game, Card* card, Action* action) {
+    void activate(Game& game, Card* card, Action* action) {
       execute(game, card, action);
-     };
+    };
 };
 
 

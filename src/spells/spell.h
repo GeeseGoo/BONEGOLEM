@@ -3,12 +3,14 @@
 #include "../card.h"
 #include "../lib.h"
 #include "../game.h"
+#include <memory>
+
 class Player;
 class Spell: public Card {
-    virtual Ability* getAbility() = 0;
-    public:
+    virtual vector<unique_ptr<Ability>> getAbilities(Game& game, Player& player, int onto) = 0;
+  public:
     Spell(std::string name, int cost, Player& player): Card(name, cost, player) {};
-    void play(Game& game, Player& player, int onto) override; // DO THIS SOMETIME
+    void play(Game &game, Player &player, EnterPlay* action) override; // DO THIS SOMETIME
     std::string getBottomLeft() override {return "";}
     std::string getBottomRight() override {return "";}
     std::string getTopLeft() override {return "";}
