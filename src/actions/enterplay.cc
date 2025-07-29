@@ -1,7 +1,7 @@
-#include "playcard.h"
+#include "enterplay.h"
 #include "../game.h"
 
-void PlayCard::execute(Game &game)
+void EnterPlay::execute(Game &game)
 {
     auto &player = game.getActivePlayer();
     auto &hand = player.getHand();

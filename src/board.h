@@ -21,7 +21,7 @@ public:
   void notifyEndTurnTriggers(EndTurn *action, Board &board, Game &game);
 
   void notifyStartTurnTriggers(StartTurn *action, Board &board, Game &game);
-  void notifyEnterPlayTriggers(PlayCard *action, Board &board, Game &game);
+  void notifyEnterPlayTriggers(EnterPlay *action, Board &board, Game &game);
   void notifyLeavePlayTriggers(LeavePlay *action, Board &board, Game &game);
 
   Minion *getMinion(int i);

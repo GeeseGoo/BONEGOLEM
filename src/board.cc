@@ -53,7 +53,7 @@ void Board::notifyEndTurnTriggers(EndTurn *action, Board &board, Game &game)
         }
     }
 }
-void Board::notifyEnterPlayTriggers(PlayCard *action, Board &board, Game &game)
+void Board::notifyEnterPlayTriggers(EnterPlay *action, Board &board, Game &game)
 {
     for (auto trigger : triggers)
     {
