@@ -5,12 +5,10 @@
 #include "../game.h"
 class Player;
 class Spell: public Card {
-    virtual void execute(Game& game) = 0;
+    virtual Ability* getAbility() = 0;
     public:
     Spell(std::string name, int cost, Player& player): Card(name, cost, player) {};
-    void play(Game& game, std::unique_ptr<Card>&& self, Player& player) {
-      execute(game);
-    };
+    void play(Game& game, Player& player, int onto) override; // DO THIS SOMETIME
     std::string getBottomLeft() override {return "";}
     std::string getBottomRight() override {return "";}
     std::string getTopLeft() override {return "";}

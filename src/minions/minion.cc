@@ -22,18 +22,11 @@ Minion::Minion(string name, int cost, int def, int atk, int actions, Player &pla
 
 Minion::Minion(string name, int cost, unique_ptr<Trigger> trigger, int def, int atk, int actions, Player &player) : Card(name, cost, std::move(trigger), player), atk(atk), def(def), actions(actions) {}
 
-void Minion::play(Game &game, std::unique_ptr<Card> &&self, Player &player)
+void Minion::play(Game &game, Player &player, int onto)
 {
   // add trigger to game
   player.getBoard().addTrigger(this->getTrigger());
-
-  Card *rawCard = self.release();
-  rawCard->addToBoard(game.getActivePlayer().getBoard());
-}
-
-void Minion::addToBoard(Board &board)
-{
-  board.addCard(this);
+  game.getActivePlayer().getBoard().addCard(this);
 }
 
 string Minion::getBottomLeft()

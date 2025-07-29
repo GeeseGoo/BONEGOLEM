@@ -21,10 +21,7 @@ class Card {
     Card(std::string name, int cost, Player& player);
     Card(std::string name, int cost, std::unique_ptr<Trigger> trigger, Player& player);
 
-    virtual void play(Game& game, std::unique_ptr<Card>&& self, Player& player) = 0;
-    virtual void addToBoard(Board& board) {
-      throw std::runtime_error("called card.addtoboard");
-    };
+    virtual void play(Game& game, Player& player, int onto) = 0;
 
     std::string getName() {
       return name;

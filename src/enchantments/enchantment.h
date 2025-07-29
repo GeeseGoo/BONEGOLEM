@@ -14,16 +14,13 @@ protected:
     virtual Minion* getNext() = 0;
     std::string getTopLeft() override {return "";}
     std::string getType() override {return "Enchantment";}
-
-};
-
-  };
-  virtual Minion *getNext() = 0;
-  void setNext(std::unique_ptr<Minion> &&minion)
-  {
-    next = std::move(minion);
-  };
-  std::string getTopLeft() override { return ""; };
+    virtual Minion *getNext() = 0;
+    void setNext(std::unique_ptr<Minion> &&minion)
+    {
+      next = std::move(minion);
+    };
+    void play(Game& game, Player& player, int onto) override;
+    std::string getTopLeft() override { return ""; };
 };
 
 #endif // ENCHANTMENT_H

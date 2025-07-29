@@ -5,8 +5,8 @@ void EnterPlay::execute(Game &game)
 {
     auto &player = game.getActivePlayer();
     auto &hand = player.getHand();
-    auto card = hand.extractCard(cardID);
-    card->play(game, std::move(card), player);
+    auto card = hand.extractCard(cardID).release();
+    card->play(game, player, onto);
     game.getActivePlayer().getBoard().notifyEnterPlayTriggers(this, game.getActivePlayer().getBoard(), game);
     game.getInactivePlayer().getBoard().notifyEnterPlayTriggers(this, game.getActivePlayer().getBoard(), game);
 

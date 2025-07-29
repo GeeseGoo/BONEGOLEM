@@ -10,10 +10,11 @@ class EnterPlay : public Action
 {
 
   int cardID;
+  int onto;
 
 public:
-  EnterPlay(int cardID) : cardID(cardID) {}
-  void execute(Game &game);
+  EnterPlay(int cardID, int onto) : cardID(cardID), onto{onto} {}
+  void execute(Game &game) override;
 };
 
 #endif // ENTERPLAY_H

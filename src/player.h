@@ -11,14 +11,13 @@
 class Card;
 class Action;
 class Player {
-  int hp = 20;
-  int magic = 0;
-  std::string name;
-  Deck deck;
-  Hand hand;
-  Board board;
-  Graveyard graveyard;
-
+    int hp = 20;
+    int magic = 0;
+    std::string name;
+    Deck deck;
+    Hand hand;
+    Board board;
+    Graveyard graveyard;
   public:
     Player(const std::string& name, const std::vector<std::string>& cardNames);
     Player& operator=(const Player& other) = delete;
@@ -31,7 +30,7 @@ class Player {
     };
 
     void takeDamage(int dmg) {
-setHp(hp - dmg);
+      setHp(hp - dmg);
     };
 
     int getHp() const {

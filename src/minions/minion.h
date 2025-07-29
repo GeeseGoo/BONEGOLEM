@@ -17,7 +17,7 @@ class Minion: public Card {
   public:
     Minion(std::string name, int cost, int atk, int def, int actions, Player& player);
     Minion(std::string name, int cost, std::unique_ptr<Trigger> trigger, int atk, int def, int actions, Player& player);
-    void play(Game& game, std::unique_ptr<Card>&& self, Player& player) override;
+    virtual void play(Game& game, Player& player, int onto) override;
     void attack(Minion& other);
     void attack(Player& other);
     void takeDamage(int dmg) {
@@ -26,8 +26,6 @@ class Minion: public Card {
           std::cout << name << " is ded"<< std::endl;
         }
     };
-
-    void addToBoard(Board& board) override;
 
     virtual int getAtk() const {return atk;}
     virtual int getDef() const {return def;}

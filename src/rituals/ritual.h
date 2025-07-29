@@ -15,9 +15,7 @@ class Ritual: public Card {
     int ritualCost;
   public:
     Ritual(std::string name, int cost, std::unique_ptr<Trigger> trigger, Player& player, int initialCharges, int ritualCost);
-    void play(Game& game, std::unique_ptr<Card>&& self, Player& player);
-
-    void addToBoard(Board& board) override;
+    void play(Game& game, Player& player, int onto) override;
     
     std::string getBottomLeft() override;
     std::string getBottomRight() override;
