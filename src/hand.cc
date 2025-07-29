@@ -15,3 +15,7 @@ Hand::Hand(){};
 void Hand::add(string cardName) {
   cards.emplace_back(createCard(cardName, *player));
 }
+
+std::size_t Hand::numCards() const {
+  return cards.size();
+}

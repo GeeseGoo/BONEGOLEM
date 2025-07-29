@@ -8,7 +8,7 @@
 using namespace std;
 
 // helper function for calling correct display function from ascii_graphics
-card_template_t makeCardDisplay(Card* card){
+card_template_t makeCardDisplay(Card* const card){
     if(card->getTopLeft() != "" && card->getBottomLeft() != "" && card->getBottomRight() != ""){
         return display_tl_bl_br_card(card->getName(), card->getCost(), card->getType(), card->description(), card->getTopLeft(), card->getBottomLeft(), card->getBottomRight());
     }else if(card->getBottomLeft() != "" && card->getBottomRight() != ""){
@@ -30,8 +30,20 @@ void AsciiInterpreter::displayMinion(int index){
 }
 
 void AsciiInterpreter::displayHand(){
-    // Card& card = game->getPlayers().getHand().getCard(0);
-    cout << "Hand moment" << endl;
+    vector<card_template_t> output = {};
+    Hand& hand = game->getActivePlayer().getHand();
+    for(unsigned int i = 0; i < hand.numCards(); i++){
+        output.push_back(makeCardDisplay(&hand.getCard(i)));
+    }
+    if(output.size() == 0){
+        cout << "Hand is empty" << endl;
+    }
+    for(unsigned int i = 0; i < output.at(0).size(); i++){
+        for(card_template_t card : output){
+            cout << card.at(i);
+        }
+        cout << endl;
+    }
 }
 
 void AsciiInterpreter::displayBoard(){
