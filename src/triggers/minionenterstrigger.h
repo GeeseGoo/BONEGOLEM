@@ -7,11 +7,14 @@
 
 class MinionEntersTrigger : public Trigger
 {
-
+  Player* exempt;
 public:
-  MinionEntersTrigger(std::unique_ptr<Ability> &&ability, Card *card) : Trigger(std::move(ability), card) {};
+  MinionEntersTrigger(std::unique_ptr<Ability> &&ability, Card *card, Player* exemption = nullptr) : Trigger(std::move(ability), card), exempt{exemption} {};
   void beTriggered(EnterPlay *action, Board &board, Game &game) override
   {
+    if(!action->isMinion() || &game.getActivePlayer() == exempt){
+      return;
+    }
     std::cout << "minion enter triggered" << std::endl;
     ability->activate(game, card, action);
   };
