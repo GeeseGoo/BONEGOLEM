@@ -3,9 +3,8 @@
 
 void UseAbility::execute(Game &game)
 {
-    Player &player = game.getActivePlayer();
-    Board &board = player.getBoard();
-    user = board.getMinion(cardID);
+    // code for checking and lowering player magic
+    validUse = true;
 }
 
 int UseAbility::getOnto() const {
@@ -17,4 +16,8 @@ int UseAbility::getPlayer() const {
 }
 void UseAbility::checkTrigger(Trigger* trig, Board &board, Game &game){
 trig->beTriggered(this, board, game);
+}
+
+Card* UseAbility::getUser() const {
+    return user;
 }

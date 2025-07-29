@@ -21,7 +21,7 @@ inline std::unique_ptr<Card> createCard(const std::string &cardName, Player &pla
   else if (cardName == "Potion Seller")
     return std::make_unique<PotionSeller>(player);
   // else if (cardName == "Novice Pyromancer") return std::make_unique<NovicePyromancer>(player);
-  // else if (cardName == "Apprentice Summoner") return std::make_unique<ApprenticeSummoner>(player);
+  else if (cardName == "Apprentice Summoner") return std::make_unique<ApprenticeSummoner>(player);
   // else if (cardName == "Master Summoner") return std::make_unique<MasterSummoner>(player);
   // else if (cardName == "Banish") return std::make_unique<Banish>(player);
   // else if (cardName == "Unsummon") return std::make_unique<Unsummon>(player);

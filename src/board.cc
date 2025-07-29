@@ -8,7 +8,7 @@
 
 void Board::addCard(Minion *minion)
 {
-    minions.emplace_back(std::unique_ptr<Minion>(minion));
+    if(minions.size() < 5) minions.emplace_back(std::unique_ptr<Minion>(minion));
 }
 void Board::addCard(Ritual *r)
 {

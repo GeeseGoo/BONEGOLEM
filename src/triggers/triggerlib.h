@@ -6,5 +6,6 @@
 #include "minionleavestrigger.h"
 #include "minionenterstrigger.h"
 #include "usecard.h"
+#include "abilitytrigger.h"
 
 #endif // TRIGGERLIB_H

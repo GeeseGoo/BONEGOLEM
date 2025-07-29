@@ -16,7 +16,7 @@ class Minion: public Card {
   int abilityCost = -1; // -1 means minion does not have an activated ability
   public:
     Minion(std::string name, int cost, int atk, int def, int actions, Player& player);
-    Minion(std::string name, int cost, std::unique_ptr<Trigger> trigger, int atk, int def, int actions, Player& player);
+    Minion(std::string name, int cost, std::unique_ptr<Trigger> trigger, int def, int atk, int actions, Player &player, int abilityCost = -1);
     virtual void play(Game &game, Player &player, EnterPlay* action) override;
     void attack(Minion& other);
     void attack(Player& other);

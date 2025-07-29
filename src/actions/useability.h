@@ -13,6 +13,7 @@ class UseAbility : public Action
   int cardID;
   int player;
   int onto;
+  bool validUse = false;
   Card* user;
 public:
   UseAbility(int cardID, int player, int onto) : cardID(cardID), player{player}, onto{onto} {}
