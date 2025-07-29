@@ -34,6 +34,7 @@ class Card {
     virtual std::string getBottomRight() = 0;
     virtual std::string getTopLeft() = 0;
     virtual std::string description() = 0;
+    virtual std::string getType() = 0;
 
 
     Player& getPlayer() {return player;};

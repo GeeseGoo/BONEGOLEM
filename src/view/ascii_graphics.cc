@@ -1,72 +1,62 @@
 #include "ascii_graphics.h"
 #include <sstream>
 
+// This code was originally provided by the CS247 course instructors
+// But was altered slightly to better match our use case
+
 static void prepare_for_replace(card_template_t &);
 static void replace_text_left(card_template_t &,char,std::string);
 static void replace_text_right(card_template_t &,char,std::string);
-static card_template_t display_minion_general(card_template_t,std::string,int,int,int,
-                                              std::string,int);
-static card_template_t display_enchantment_general(card_template_t,std::string,int,std::string,
-                                                   std::string,std::string);
 
-card_template_t display_minion_no_ability(std::string name,int cost,int attack,int defence) {
-  return display_minion_general(CARD_TEMPLATE_MINION_NO_ABILITY,name,cost,attack,defence,"",0);
-}
-
-card_template_t display_minion_triggered_ability(std::string name,int cost,int attack,
-                                                 int defence,std::string trigger_desc) {
-  return display_minion_general(CARD_TEMPLATE_MINION_NO_ABILITY,name,cost,attack,
-                                defence,trigger_desc,0);
-}
-
-card_template_t display_minion_activated_ability(std::string name,int cost,int attack, int defence,
-                                                 int ability_cost,std::string ability_desc) {
-  return display_minion_general(CARD_TEMPLATE_MINION_WITH_ABILITY,name,cost,attack,defence,
-                                ability_desc,ability_cost);
-}
-
-card_template_t display_ritual(std::string name,int cost,int ritual_cost,std::string ritual_desc,
-                               int ritual_charges) {
-  std::ostringstream oss;
-  card_template_t out(CARD_TEMPLATE_RITUAL);
+card_template_t display_basic_card(std::string name, int cost, std::string type, std::string description){
+  card_template_t out = CARD_TEMPLATE;
   prepare_for_replace(out);
   replace_text_left(out,'N',name);
-  oss << cost;
-  replace_text_right(out,'C',oss.str());
-  replace_text_right(out,'T',"Ritual");
-  oss.str("");
-  oss << ritual_cost;
-  replace_text_left(out,'K',oss.str());
-  replace_text_left(out,'E',ritual_desc);
-  oss.str("");
-  oss << ritual_charges;
-  replace_text_right(out,'D',oss.str());
+  replace_text_right(out,'C', std::to_string(cost));
+  replace_text_right(out,'T', type);
+  replace_text_left(out,'E', description);
   return out;
 }
 
-card_template_t display_spell(std::string name,int cost,std::string desc) {
-  std::ostringstream oss;
-  card_template_t out(CARD_TEMPLATE_SPELL);
+card_template_t display_tl_bl_br_card(std::string name, int cost, std::string type, std::string description, std::string top_left, std::string bottom_left, std::string bottom_right){
+  card_template_t out = CARD_TEMPLATE_TL_BL_BR;
   prepare_for_replace(out);
   replace_text_left(out,'N',name);
-  oss << cost;
-  replace_text_right(out,'C',oss.str());
-  replace_text_right(out,'T',"Spell");
-  replace_text_left(out,'E',desc);
+  replace_text_right(out,'C', std::to_string(cost));
+  replace_text_right(out,'T', type);
+  replace_text_left(out,'A', bottom_left);
+  replace_text_right(out,'D', bottom_right);
+  replace_text_left(out,'E', description);
+  replace_text_left(out,'K', top_left);
   return out;
 }
 
-card_template_t display_enchantment(std::string name,int cost,std::string desc) {
-  return display_enchantment_general(CARD_TEMPLATE_ENCHANTMENT,name,cost,desc,"","");
+card_template_t display_bl_br_card(std::string name, int cost, std::string type, std::string description, std::string bottom_left, std::string bottom_right){
+  card_template_t out = CARD_TEMPLATE_BL_BR;
+  prepare_for_replace(out);
+  replace_text_left(out,'N',name);
+  replace_text_right(out,'C', std::to_string(cost));
+  replace_text_right(out,'T', type);
+  replace_text_left(out,'A', bottom_left);
+  replace_text_right(out,'D', bottom_right);
+  replace_text_left(out,'E', description);
+  return out;
+
 }
 
-card_template_t display_enchantment_attack_defence(std::string name,int cost,std::string desc,
-                                                   std::string attack,std::string defence) {
-  return display_enchantment_general(CARD_TEMPLATE_ENCHANTMENT_WITH_ATTACK_DEFENCE,
-                                     name,cost,desc,attack,defence);
+card_template_t display_tl_br_card(std::string name, int cost, std::string type, std::string description, std::string top_left, std::string bottom_right){
+  card_template_t out = CARD_TEMPLATE_TL_BR;
+  prepare_for_replace(out);
+  replace_text_left(out,'N',name);
+  replace_text_right(out,'C', std::to_string(cost));
+  replace_text_right(out,'T', type);
+  replace_text_right(out,'D', bottom_right);
+  replace_text_left(out,'E', description);
+  replace_text_left(out,'K', top_left);
+  return out;
 }
 
-card_template_t display_player_card(int player_num,std::string name,int life,int mana) {
+card_template_t given_display_player_card(int player_num,std::string name,int life,int mana) {
   std::ostringstream oss;
   card_template_t out = player_num == 1 ? PLAYER_1_TEMPLATE : PLAYER_2_TEMPLATE;
   prepare_for_replace(out);
@@ -88,42 +78,7 @@ card_template_t display_player_card(int player_num,std::string name,int life,int
   return out;
 }
 
-static card_template_t display_enchantment_general(card_template_t out,std::string name,int cost,
-                                                   std::string desc,std::string attack,
-                                                   std::string defence) {
-  std::ostringstream oss;
-  prepare_for_replace(out);
-  replace_text_left(out,'N',name);
-  oss << cost;
-  replace_text_right(out,'C',oss.str());
-  replace_text_right(out,'T',"Enchantment");
-  replace_text_left(out,'E',desc);
-  replace_text_left(out,'A',attack);
-  replace_text_right(out,'D',defence);
-  return out;
-}
-
-static card_template_t display_minion_general(card_template_t out,std::string name,int cost,int attack,int defence,std::string desc,int ability_cost) {
-  std::ostringstream oss;
-  prepare_for_replace(out);
-  replace_text_left(out,'N',name);
-  oss << cost;
-  replace_text_right(out,'C',oss.str());
-  replace_text_right(out,'T',"Minion");
-  oss.str("");
-  oss << attack;
-  replace_text_left(out,'A',oss.str());
-  oss.str("");
-  oss << defence;
-  replace_text_right(out,'D',oss.str());
-  replace_text_left(out,'E',desc);
-  oss.str("");
-  oss << ability_cost;
-  replace_text_left(out,'K',oss.str());
-  return out;
-}
-
-const card_template_t CARD_TEMPLATE_MINION_NO_ABILITY =
+const card_template_t CARD_TEMPLATE_BL_BR =
 #if SIMPLE_GRAPHICS == 0
       {"┏━━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━┓",
        "┃ ~NNNNNNNNNNNNNNNNNNNNN~ │ ~C~ ┃",
@@ -151,7 +106,7 @@ const card_template_t CARD_TEMPLATE_MINION_NO_ABILITY =
 #endif
 
 
-const card_template_t CARD_TEMPLATE_MINION_WITH_ABILITY =
+const card_template_t CARD_TEMPLATE_TL_BL_BR =
 #if SIMPLE_GRAPHICS == 0
       {"┏━━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━┓",
        "┃ ~NNNNNNNNNNNNNNNNNNNNN~ │ ~C~ ┃",
@@ -218,7 +173,7 @@ const card_template_t CARD_TEMPLATE_EMPTY =
        "                                 ",
        "                                 "};
 
-const card_template_t CARD_TEMPLATE_RITUAL =
+const card_template_t CARD_TEMPLATE_TL_BR =
 #if SIMPLE_GRAPHICS == 0
       {"┏━━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━┓",
        "┃ ~NNNNNNNNNNNNNNNNNNNNN~ │ ~C~ ┃",
@@ -245,7 +200,7 @@ const card_template_t CARD_TEMPLATE_RITUAL =
        "|-------------------------------|"};
 #endif
 
-const card_template_t CARD_TEMPLATE_SPELL = 
+const card_template_t CARD_TEMPLATE = 
 #if SIMPLE_GRAPHICS == 0
       {"┏━━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━┓",
        "┃ ~NNNNNNNNNNNNNNNNNNNNN~ │ ~C~ ┃",
@@ -271,9 +226,6 @@ const card_template_t CARD_TEMPLATE_SPELL =
        "| EEEEEEEEEEEEEEEEEEEEEEEEEEEE~ |",
        "|-------------------------------|"};
 #endif
-
-const card_template_t CARD_TEMPLATE_ENCHANTMENT_WITH_ATTACK_DEFENCE = CARD_TEMPLATE_MINION_NO_ABILITY;
-const card_template_t CARD_TEMPLATE_ENCHANTMENT = CARD_TEMPLATE_SPELL;
 
 const card_template_t PLAYER_1_TEMPLATE =
 #if SIMPLE_GRAPHICS == 0

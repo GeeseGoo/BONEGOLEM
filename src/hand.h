@@ -37,5 +37,6 @@ class Hand {
 
     void pop(int);
     bool isHandFull() const;
+    std::size_t numCards() const;
 };
 #endif // HAND_H

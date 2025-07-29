@@ -14,6 +14,7 @@ class Spell: public Card {
     std::string getBottomLeft() override {return "";}
     std::string getBottomRight() override {return "";}
     std::string getTopLeft() override {return "";}
+    std::string getType() override {return "Spell";}
 };
 
 #endif // SPELL_h
