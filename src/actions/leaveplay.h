@@ -18,11 +18,13 @@ public:
   LeavePlay(Minion &minion, Board &board) : minion(minion), board(board) {}
   void execute(Game &game)
   {
-    game.getActivePlayer().getBoard().notifyLeavePlayTriggers(this, game.getActivePlayer().getBoard(), game);
-    game.getInactivePlayer().getBoard().notifyLeavePlayTriggers(this, game.getActivePlayer().getBoard(), game);
     std::cout << "removing minion from board: " << minion.getName() << std::endl;
     board.removeMinion(minion);
   }
+  void checkTrigger(Trigger* trig, Board &board, Game &game) override{
+    trig->beTriggered(this, board, game);
+  }
+
 };
 
 #endif // LEAVEPLAY_H

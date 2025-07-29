@@ -25,54 +25,13 @@ Minion *Board::getMinion(int i)
     return minions.at(i).get();
 }
 
-void Board::addTrigger(Trigger *trigger)
+void Board::trigger(Action *action, Game &game)
 {
-    triggers.emplace_back(trigger);
-}
-
-void Board::notifyStartTurnTriggers(StartTurn *action, Board &board, Game &game)
-{
-    for (auto trigger : triggers)
-    {
-        if (trigger)
-        {
-
-            trigger->beTriggered(action, *this, game);
-        }
+    cout << "Cecking triggers" << endl;
+    for (Minion *m : getMinions()) {
+        if(m && m->getTrigger()) m->getTrigger()->trigger(action, *this, game);
     }
-}
-
-void Board::notifyEndTurnTriggers(EndTurn *action, Board &board, Game &game)
-{
-    for (auto trigger : triggers)
-    {
-        if (trigger)
-        {
-
-            trigger->beTriggered(action, *this, game);
-        }
-    }
-}
-void Board::notifyEnterPlayTriggers(EnterPlay *action, Board &board, Game &game)
-{
-    for (auto trigger : triggers)
-    {
-        if (trigger)
-        {
-            trigger->beTriggered(action, *this, game);
-        }
-    }
-}
-void Board::notifyLeavePlayTriggers(LeavePlay *action, Board &board, Game &game)
-{
-    for (auto trigger : triggers)
-    {
-        if (trigger)
-        {
-
-            trigger->beTriggered(action, *this, game);
-        }
-    }
+    if(ritual && ritual->getTrigger()) ritual->getTrigger()->trigger(action, *this, game);
 }
 
 std::vector<Minion *> Board::getMinions()

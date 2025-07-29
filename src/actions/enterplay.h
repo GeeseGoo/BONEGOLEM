@@ -11,18 +11,19 @@ class EnterPlay : public Action
 {
 
   int cardID;
+  int player;
   int onto;
   bool minion = false;
   Card* entering = nullptr;
 
 public:
-  EnterPlay(int cardID, int onto) : cardID(cardID), onto{onto} {}
+  EnterPlay(int cardID, int player, int onto) : cardID(cardID), player{player}, onto{onto} {}
   void execute(Game &game) override;
   int getOnto() const;
+  int getPlayer() const;
   bool isMinion() {return minion;}
   void iAmMinion() {minion = true;}
-  void iEnter(Card* card) {entering = card;}
-  Card* getCard() {return entering;}
+  void checkTrigger(Trigger* trig, Board &board, Game &game) override;
 };
 
 #endif // ENTERPLAY_H

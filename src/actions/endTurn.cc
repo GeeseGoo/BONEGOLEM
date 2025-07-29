@@ -4,6 +4,10 @@
 
 void EndTurn::execute(Game &game) {
     playerNum = game.getPlayerNum();
-    std::cout << "notifying end turn game triggers" << std::endl;
-    game.getActivePlayer().getBoard().notifyEndTurnTriggers(this, game.getActivePlayer().getBoard(), game);
+    std::cout << "NOT notifying end turn game triggers" << std::endl;
 }
+
+void EndTurn::checkTrigger(Trigger* trig, Board &board, Game &game){
+trig->beTriggered(this, board, game);
+}
+

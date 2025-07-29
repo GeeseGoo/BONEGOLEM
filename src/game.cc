@@ -23,8 +23,14 @@ void Game::nextPlayer()
 
 void Game::action(std::unique_ptr<Action> action)
 {
-  action->execute(*this);
+  action->act(*this);
   actionHistory.push_back(std::move(action));
+}
+
+void Game::trigger(Action* action){
+  for(unsigned int i = 0; i < players.size(); i++){
+    players.at((getPlayerIdx()+i)%players.size()).getBoard().trigger(action, *this);
+  }
 }
 
 Hand *Game::getCurrentHand()

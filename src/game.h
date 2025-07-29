@@ -47,6 +47,7 @@ public:
   Minion *getCurrentMinion(int index);
   Hand *getCurrentHand();
   vector<Board *> getBoards();
+  void trigger(Action* action);
 };
 
 #endif // GAME_H

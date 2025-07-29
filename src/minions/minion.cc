@@ -25,10 +25,7 @@ Minion::Minion(string name, int cost, unique_ptr<Trigger> trigger, int def, int 
 
 void Minion::play(Game &game, Player &player, EnterPlay* action)
 {
-  // add trigger to game
   action->iAmMinion();
-  action->iEnter(this);
-  player.getBoard().addTrigger(this->getTrigger());
   game.getActivePlayer().getBoard().addCard(this);
 }
 

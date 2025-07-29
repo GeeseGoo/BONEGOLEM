@@ -3,6 +3,7 @@
 
 #include "action.h"
 #include "../game.h"
+#include "../triggers/trigger.h"
 
 class AttackMinion: public Action {
 
@@ -11,6 +12,9 @@ class AttackMinion: public Action {
   public:
     AttackMinion(int attackerID, int attackeeID): attackerID(attackerID), attackeeID(attackeeID) {}
     void execute(Game& game);
+    void checkTrigger(Trigger* trig, Board &board, Game &game) override{
+      trig->beTriggered(this, board, game);
+    }
 };
 
 #endif // ATTACKMINION_H

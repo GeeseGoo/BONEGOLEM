@@ -13,7 +13,7 @@ public:
   void beTriggered(LeavePlay *action, Board &board, Game &game) override
   {
     std::cout << "minion leave triggered" << std::endl;
-    ability->activate(game, card, action);
+    ability->activate(game, card, action, -1,-1);
   };
 };
 

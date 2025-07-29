@@ -13,7 +13,7 @@ class AllMinionBuff : public Ability
   int atkBuff;
   int defBuff;
   Player* player;
-  void execute(Game &game, Card *card, Action *action) override
+  void execute(Game &game, Card *card, Action *action, int p, int onto) override
   {
     if(!player){
       player = &game.getActivePlayer();

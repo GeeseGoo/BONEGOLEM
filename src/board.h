@@ -7,22 +7,18 @@
 #include <string>
 #include <stdexcept>
 
+class Minion;
 class Trigger;
+class Action;
 class Board
 {
   std::vector<std::unique_ptr<Minion>> minions;
   std::unique_ptr<Ritual> ritual;
-  std::vector<Trigger *> triggers;
 
 public:
   void addCard(Minion *minion);
   void addCard(Ritual *r);
-  void addTrigger(Trigger *trigger);
-  void notifyEndTurnTriggers(EndTurn *action, Board &board, Game &game);
-
-  void notifyStartTurnTriggers(StartTurn *action, Board &board, Game &game);
-  void notifyEnterPlayTriggers(EnterPlay *action, Board &board, Game &game);
-  void notifyLeavePlayTriggers(LeavePlay *action, Board &board, Game &game);
+  void trigger(Action *action, Game& game);
 
   Minion *getMinion(int i);
   std::vector<Minion *> getMinions();

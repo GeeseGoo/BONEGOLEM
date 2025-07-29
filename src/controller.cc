@@ -138,23 +138,28 @@ void Controller::play(istream &in)
       {
         game->action(make_unique<AttackMinion>(std::stoi(tokens[1]), std::stoi(tokens[2])));
       }
-
-      cout << "attack" << endl;
     }
     if (tokens[0] == "play")
     {
       if (tokens.size() == 2)
       {
-        game->action(make_unique<EnterPlay>(std::stoi(tokens[1]), -1));
+        game->action(make_unique<EnterPlay>(std::stoi(tokens[1]), game->getPlayerIdx(), -1));
       }
-      if (tokens.size() == 3)
+      if (tokens.size() == 4)
       {
-        game->action(make_unique<EnterPlay>(std::stoi(tokens[1]), std::stoi(tokens[2])));
+        game->action(make_unique<EnterPlay>(std::stoi(tokens[1]), std::stoi(tokens[2]), std::stoi(tokens[3])));
       }
-      cout << "play" << endl;
     }
     if (tokens[0] == "use")
     {
+      if (tokens.size() == 2)
+      {
+        game->action(make_unique<UseAbility>(std::stoi(tokens[1]), game->getPlayerIdx(), -1));
+      }
+      if (tokens.size() == 4)
+      {
+        game->action(make_unique<UseAbility>(std::stoi(tokens[1]), std::stoi(tokens[2]), std::stoi(tokens[3])));
+      }
       cout << "use" << endl;
     }
     if (tokens[0] == "inspect")

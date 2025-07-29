@@ -2,7 +2,6 @@
 #define ENDTURN_H
 
 #include "action.h"
-class Game;
 
 class EndTurn: public Action {
   int playerNum;
@@ -11,6 +10,7 @@ class EndTurn: public Action {
 
   int getPlayerNum() { return playerNum;};
   void execute(Game &game) override;
+  void checkTrigger(Trigger* trig, Board &board, Game &game) override;
 };
 
 

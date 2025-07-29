@@ -11,11 +11,11 @@
 class PlayerStatBuff: public Ability {
   int hpDelta;
   int magicDelta;
-  void execute(Game& game, Card* card, Action* action) override {
+  void execute(Game& game, Card* card, Action* action, int player, int onto) override {
     std::cout << "buffed player" << std::endl;
-    Player& player = game.getActivePlayer();
-    player.takeDamage(-1 * hpDelta);
-    player.setMagic(player.getMagic() + magicDelta);
+    Player& active = game.getActivePlayer();
+    active.takeDamage(-1 * hpDelta);
+    active.setMagic(active.getMagic() + magicDelta);
   };
 
   public:
