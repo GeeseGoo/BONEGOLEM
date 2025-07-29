@@ -1,13 +1,14 @@
 #ifndef GRAVEYARD_H
 #define GRAVEYARD_H
 
-#include <vector>
+#include <stack>
 #include <memory>
 class Card;
 class Graveyard {
-  std::vector<std::unique_ptr<Card>> cards;
+  std::stack<std::unique_ptr<Card>> cards;
   public:
     void add(std::unique_ptr<Card> Card);
-    void pop(int);
+    Card* pop(int);
+    Card* top();
 };
 #endif // HAND_H

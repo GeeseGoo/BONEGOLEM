@@ -12,7 +12,7 @@ class View {
     void assignGame(Game* g){game = g;}
     virtual void displayMinion(int index) = 0;
     virtual void displayHand() = 0;
-    virtual void displayBoard() = 0;
+    virtual void displayBoard() = 0;    
 };
 
 

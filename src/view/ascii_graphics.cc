@@ -56,7 +56,7 @@ card_template_t display_tl_br_card(std::string name, int cost, std::string type,
   return out;
 }
 
-card_template_t given_display_player_card(int player_num,std::string name,int life,int mana) {
+card_template_t display_player_card_given(int player_num,std::string name,int life,int mana) {
   std::ostringstream oss;
   card_template_t out = player_num == 1 ? PLAYER_1_TEMPLATE : PLAYER_2_TEMPLATE;
   prepare_for_replace(out);

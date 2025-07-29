@@ -16,13 +16,13 @@ public:
   PlayMagic(int magicID, int targetCardID, int playerNum) : magicID(magicID), targetCardID(targetCardID), playerIdx(playerNum - 1) {}
   void execute(Game &game)
   {
-    auto &player = game.getActivePlayer();
-    Player &targetPlayer = game.getPlayers()[playerIdx];
-    auto &hand = player.getHand();
-    auto magic = hand.extractCard(magicID);
-    caster->play(game, std::move(caster), player);
+    // auto &player = game.getActivePlayer();
+    // Player &targetPlayer = game.getPlayers()[playerIdx];
+    // auto &hand = player.getHand();
+    // auto magic = hand.extractCard(magicID);
+    // // caster->play(game, std::move(caster), player);
 
-    std::cout << "played card" << std::to_string(cardID) << std::endl;
+    // std::cout << "played card" << std::to_string(cardID) << std::endl;
   }
 };
 

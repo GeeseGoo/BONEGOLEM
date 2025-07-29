@@ -6,6 +6,7 @@
 #include "deck.h"
 #include "hand.h"
 #include "board.h"
+#include "graveyard.h"
 #include <iostream>
 class Card;
 class Action;
@@ -16,6 +17,7 @@ class Player {
   Deck deck;
   Hand hand;
   Board board;
+  Graveyard graveyard;
 
   public:
     Player(const std::string& name, const std::vector<std::string>& cardNames);
@@ -31,6 +33,10 @@ class Player {
     void takeDamage(int dmg) {
 setHp(hp - dmg);
     };
+
+    int getHp() const {
+      return hp;
+    }
 
     void setHp(int newHp) {
       hp = newHp;
@@ -55,6 +61,10 @@ setHp(hp - dmg);
     }
 
     Board& getBoard();
+
+    Graveyard& getGraveyard() {
+      return graveyard;
+    }
 
     void dealDamage(int dmg);
     

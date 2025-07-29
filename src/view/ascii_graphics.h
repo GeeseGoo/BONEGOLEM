@@ -25,6 +25,7 @@ extern const card_template_t CARD_TEMPLATE_TL_BL_BR;
 extern const card_template_t CARD_TEMPLATE_BORDER;
 extern const card_template_t CARD_TEMPLATE_TL_BR;
 extern const card_template_t CARD_TEMPLATE;
+extern const card_template_t CARD_TEMPLATE_EMPTY;
 
 extern const card_template_t PLAYER_1_TEMPLATE;
 extern const card_template_t PLAYER_2_TEMPLATE;

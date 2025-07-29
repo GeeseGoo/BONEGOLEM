@@ -7,5 +7,6 @@
 #include "attackPlayer.h"
 #include "enterplay.h"
 #include "leaveplay.h"
+#include "playmagic.h"
 
 #endif // ACTIONLIB_H

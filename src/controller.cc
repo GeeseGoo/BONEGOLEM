@@ -149,7 +149,7 @@ void Controller::play(istream &in)
       }
       if (tokens.size() == 3)
       {
-        // game->action(make_unique<EnterPlay>(std::stoi(tokens[1]), std::stoi(tokens[2])));
+        // game->action(make_unique<playmagic>(std::stoi(tokens[1]), std::stoi(tokens[2])));
       }
       cout << "play" << endl;
     }
