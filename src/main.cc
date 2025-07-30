@@ -13,7 +13,7 @@ int main (int argc, char* argv[]) {
     string deck1, deck2 = "default.deck";
     bool testing = false;
     for (int i = 1; i < argc; i++) {
-        if (string(argv[i]) == "-init") { // need to do more here
+        if (string(argv[i]) == "-init") {
             initFile = argv[++i];
         }
         if(string(argv[i]) == "-deck1") {

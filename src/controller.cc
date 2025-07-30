@@ -70,9 +70,10 @@ void Controller::init(istream &in, string deck1Name, string deck2Name, bool isTe
   // give view access to the game
   view->assignGame(game.get());
   // shuffle decks
-  for (auto &player : game->getPlayers())
-  {
-    player.shuffle();
+  if(!testing){
+    for (Player &player : game->getPlayers()){
+      player.shuffle();
+    }
   }
   game->action(make_unique<StartTurn>());
 }
@@ -120,12 +121,14 @@ void Controller::play(istream &in)
     {
       cout << "quit" << endl;
     }
-    if (tokens[0] == "draw")
+    if (tokens[0] == "draw" && testing)
     {
+      game->getActivePlayer().draw();
       cout << "draw" << endl;
     }
     if (tokens[0] == "discard")
     {
+      int index = std::stoi(tokens[1]);
       cout << "discard" << endl;
     }
     if (tokens[0] == "attack")
