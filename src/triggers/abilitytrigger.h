@@ -4,8 +4,8 @@
 #include "trigger.h"
 #include "../actions/useability.h"
 
-class AbilityTrigger : public Trigger
-{
+// Trigger goes on minions with activated abilities -> activated by the 'use' command
+class AbilityTrigger : public Trigger {
 public:
   AbilityTrigger(std::unique_ptr<Ability> &&ability, Card *card) : Trigger(std::move(ability), card) {};
   bool beTriggered(UseAbility *action, Board &board, Game &game) override

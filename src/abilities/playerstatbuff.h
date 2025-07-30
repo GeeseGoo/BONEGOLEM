@@ -8,6 +8,7 @@
 #include "../actions/action.h"
 #include "../lib.h"
 
+// for changing the player's stats
 class PlayerStatBuff: public Ability {
   int hpDelta;
   int magicDelta;

@@ -7,9 +7,8 @@
 
 class Game;
 
-class MinionCreate : public Action
-{
-
+// creates a new minion on the board (that was not previously in existence)
+class MinionCreate : public Action {
   std::string name;
   int player;
   Card* entering = nullptr;

@@ -8,6 +8,7 @@
 #include "../actions/action.h"
 #include "../lib.h"
 
+// buffs all minions belongning to a specific player
 class AllMinionBuff : public Ability
 {
   int atkBuff;

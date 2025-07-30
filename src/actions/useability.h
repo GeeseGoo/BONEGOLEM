@@ -8,6 +8,7 @@
 class Game;
 class Minion;
 
+// action that is activated by the use command -> triggers activated abilities
 class UseAbility : public Action
 {
   int cardID;

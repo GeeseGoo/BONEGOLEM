@@ -8,6 +8,7 @@
 
 class Game;
 
+// this gets created by the KillMinion command, but should be used whenever a minion leaves the board (even if it isn't dead)
 class LeavePlay : public Action {
   Minion &minion;
   Board &board;

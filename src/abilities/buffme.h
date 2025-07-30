@@ -7,7 +7,7 @@
 #include "../actions/action.h"
 #include "../lib.h"
 
-// For buffing a minion whenever it's trigger
+// For buffing a minion whenever it's triggered
 class BuffMe : public Ability {
     int atkBuff;
     int defBuff;
