@@ -30,6 +30,21 @@ public:
   virtual void setAtk(int val) { atk = val; }
   virtual void setDef(int val) { def = val; }
   virtual int getActions() const { return actions; }
+  bool deltaActions(int m)
+  {
+    m *= -1;
+    if (actions + m < 0)
+    {
+      std::cout << "Out of actions; action aborted" << std::endl;
+      return false;
+    }
+    actions += m;
+    return true;
+  }
+  void setActions(int a)
+  {
+    actions = a;
+  };
   virtual int getAbilityCost() const { return abilityCost; }
   std::string getBottomLeft() override;
   std::string getBottomRight() override;

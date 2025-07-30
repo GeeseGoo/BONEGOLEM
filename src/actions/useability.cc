@@ -4,8 +4,16 @@
 void UseAbility::execute(Game &game)
 {
     // code for checking and lowering player magic
+    int oldMagic = game.getPlayers().at(player).getMagic();
     if (!game.getPlayers().at(player).deltaMagic(game.getActivePlayer().getBoard().getMinion(cardID)->getAbilityCost()))
         return;
+    else
+    {
+        game.getPlayers().at(player).setMagic(oldMagic);
+    }
+    if (!game.getPlayers().at(player).getBoard().getMinion(cardID)->deltaActions(1))
+        return;
+
     validUse = true;
     user = game.getPlayers().at(player).getBoard().getMinion(cardID);
 }
