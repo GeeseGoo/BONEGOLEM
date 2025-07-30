@@ -14,7 +14,7 @@ class Ritual: public Card {
     int charges;
     int ritualCost;
   public:
-    Ritual(std::string name, int cost, std::unique_ptr<Trigger> trigger, Player& player, int initialCharges, int ritualCost);
+    Ritual(std::string name, int cost, std::unique_ptr<Trigger> trigger, int playerNum, int initialCharges, int ritualCost);
     void play(Game &game, Player &player, EnterPlay* action) override;
     
     std::string getBottomLeft() override;

@@ -14,7 +14,7 @@ class Blizzard: public Spell {
       return abilityList;
     } 
   public:
-    Blizzard(Player& player): Spell("Blizzard", 3, player){};
+    Blizzard(int playerNum): Spell("Blizzard", 3, playerNum){};
     std::string description() override {return "Deal 2 damage to all minions.";}
 };
 

@@ -6,8 +6,8 @@
 using namespace std;
 Game::Game(std::string name1, std::string name2, std::vector<std::string> deck1, std::vector<std::string> deck2) : activePlayer(1)
 {
-  players.emplace_back(Player(name1, deck1));
-  players.emplace_back(Player(name2, deck2));
+  players.emplace_back(Player(0, name1, deck1));
+  players.emplace_back(Player(1, name2, deck2));
 }
 
 Player &Game::getActivePlayer()

@@ -143,6 +143,7 @@ void Controller::play(istream &in)
     {
       if (tokens.size() == 2)
       {
+        std::cout << game->getPlayerIdx() << " is player";
         game->action(make_unique<EnterPlay>(std::stoi(tokens[1]), game->getPlayerIdx(), -1));
       }
       if (tokens.size() == 4)

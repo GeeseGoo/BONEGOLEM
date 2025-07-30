@@ -6,7 +6,7 @@ class AirElemental : public Minion
 {
 
 public:
-  AirElemental(Player &player) : Minion("Air Elemental", 0, 1, 1, 1, player) {};
+  AirElemental(int playerNum) : Minion("Air Elemental", 0, 1, 1, 1, playerNum) {};
   std::string description() override { return ""; }
 };
 

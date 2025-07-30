@@ -12,14 +12,14 @@ class EnterPlay;
 
 class Card {
   std::unique_ptr<Trigger> trigger;
-  Player& player;
+  int playerNum;
   
   protected:
     std::string name; 
     int cost; 
   public:
-    Card(std::string name, int cost, Player& player);
-    Card(std::string name, int cost, std::unique_ptr<Trigger> trigger, Player& player);
+    Card(std::string name, int cost, int playerNum);
+    Card(std::string name, int cost, std::unique_ptr<Trigger> trigger, int playerNum);
 
     virtual void play(Game &game, Player &player, EnterPlay* action) = 0;
 
@@ -32,9 +32,6 @@ class Card {
     virtual std::string getTopLeft() = 0;
     virtual std::string description() = 0;
     virtual std::string getType() = 0;
-
-
-    Player& getPlayer() {return player;};
 
     Trigger* getTrigger();
 };

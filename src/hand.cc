@@ -7,13 +7,14 @@ bool Hand::isHandFull() const {
   if (cards.size() >= 5) return true;
   return false;
 }
-void Hand::setPlayer(Player* p) {
-      player = p;
-    }
-Hand::Hand(){};
+
+Hand::Hand(Player* p): playerNum{p->getNum()} {
+  cout << this << " Created hand for player " << p->getNum() << endl;
+};
 
 void Hand::add(string cardName) {
-  cards.emplace_back(createCard(cardName, *player));
+  std::cout << this << " adding card to player " << playerNum << std::endl;
+  cards.emplace_back(createCard(cardName, playerNum));
 }
 
 std::size_t Hand::numCards() const {

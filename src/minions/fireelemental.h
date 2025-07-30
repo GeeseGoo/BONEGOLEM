@@ -7,9 +7,9 @@
 
 class FireElemental : public Minion {
 public:
-  FireElemental(Player &player) : Minion("Fire Elemental", 2,
-                                     std::make_unique<MinionEntersTrigger>(std::make_unique<OtherMinionBuff>(0, -1), this, &player),
-                                     2, 2, 1, player) {};
+  FireElemental(int playerNum) : Minion("Fire Elemental", 2,
+                                     std::make_unique<MinionEntersTrigger>(std::make_unique<OtherMinionBuff>(0, -1), this, playerNum),
+                                     2, 2, 1, playerNum) {std::cout << "made elemental for player " << playerNum << endl;};
   std::string description() override { return "Whenever an opponent's minion enters play, deal 1 damage to it."; }
 };
 

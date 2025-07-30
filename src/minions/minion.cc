@@ -19,9 +19,9 @@ void Minion::attack(Minion &other)
   other.takeDamage(atk);
 }
 
-Minion::Minion(string name, int cost, int def, int atk, int actions, Player &player) : Card(name, cost, player), atk(atk), def(def), actions(actions) {}
+Minion::Minion(string name, int cost, int def, int atk, int actions, int playerNum) : Card(name, cost, playerNum), atk(atk), def(def), actions(actions) {}
 
-Minion::Minion(string name, int cost, unique_ptr<Trigger> trigger, int def, int atk, int actions, Player &player, int abilityCost) : Card(name, cost, std::move(trigger), player), atk(atk), def(def), actions(actions), abilityCost(abilityCost) {}
+Minion::Minion(string name, int cost, unique_ptr<Trigger> trigger, int def, int atk, int actions, int playerNum, int abilityCost) : Card(name, cost, std::move(trigger), playerNum), atk(atk), def(def), actions(actions), abilityCost(abilityCost) {}
 
 void Minion::play(Game &game, Player &player, EnterPlay* action)
 {

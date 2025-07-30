@@ -9,9 +9,9 @@
 class Player;
 class Hand {
   std::vector<std::unique_ptr<Card>> cards;
-  Player* player = nullptr;
+  int playerNum;
   public:
-  Hand();
+    Hand(Player* p);
     void add(std::string cardName);
     void add(std::unique_ptr<Card> card);
     Card& getCard(int i) {
@@ -32,8 +32,6 @@ class Hand {
       cards.erase(cards.begin() + i);
       return card;
     }
-
-    void setPlayer(Player* p);
 
     void pop(int);
     bool isHandFull() const;

@@ -10,7 +10,7 @@ void Ritual::play(Game &game, Player &player, EnterPlay* action) {
   game.getActivePlayer().getBoard().addCard(this);
 };
 
-Ritual::Ritual(std::string name, int cost, std::unique_ptr<Trigger> trigger, Player& player, int initialCharges, int ritualCost): Card(name, cost, std::move(trigger), player), charges{initialCharges}, ritualCost{ritualCost} {};
+Ritual::Ritual(std::string name, int cost, std::unique_ptr<Trigger> trigger, int playerNum, int initialCharges, int ritualCost): Card(name, cost, std::move(trigger), playerNum), charges{initialCharges}, ritualCost{ritualCost} {};
 
 string Ritual::getBottomLeft(){
   return "";

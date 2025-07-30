@@ -7,7 +7,7 @@ void EnterPlay::execute(Game &game)
     auto &hand = player.getHand();
     auto card = hand.extractCard(cardID).release();
     card->play(game, player, this);
-    std::cout << "played card" << std::to_string(cardID) << std::endl;
+    std::cout << "played card " << std::to_string(cardID) << std::endl;
 }
 
 int EnterPlay::getOnto() const {
@@ -18,7 +18,7 @@ int EnterPlay::getPlayer() const {
     return player;
 }
 
-  void EnterPlay::checkTrigger(Trigger* trig, Board &board, Game &game){
-    trig->beTriggered(this, board, game);
-  }
+void EnterPlay::checkTrigger(Trigger* trig, Board &board, Game &game){
+  trig->beTriggered(this, board, game);
+}
 

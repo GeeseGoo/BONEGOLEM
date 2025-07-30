@@ -9,7 +9,7 @@ class Player;
 class Spell: public Card {
     virtual vector<unique_ptr<Ability>> getAbilities(Game& game, Player& player, int onto) = 0;
   public:
-    Spell(std::string name, int cost, Player& player): Card(name, cost, player) {};
+    Spell(std::string name, int cost, int playerNum): Card(name, cost, playerNum) {};
     void play(Game &game, Player &player, EnterPlay* action) override; // DO THIS SOMETIME
     std::string getBottomLeft() override {return "";}
     std::string getBottomRight() override {return "";}

@@ -1,25 +1,25 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include <string>
-#include <vector>
 #include "deck.h"
 #include "hand.h"
 #include "board.h"
 #include "graveyard.h"
-#include <iostream>
+#include "lib.h"
+
 class Card;
 class Action;
 class Player {
+    int num;
     int hp = 20;
     int magic = 0;
     std::string name;
     Deck deck;
-    Hand hand;
+    std::unique_ptr<Hand> hand;
     Board board;
     Graveyard graveyard;
   public:
-    Player(const std::string& name, const std::vector<std::string>& cardNames);
+    Player(const int num, const std::string& name, const std::vector<std::string>& cardNames);
     Player& operator=(const Player& other) = delete;
     Player(const Player& other) = delete;
     Player(Player&& other) = default;
@@ -28,6 +28,10 @@ class Player {
     std::string getName() {
       return name;
     };
+
+    int getNum(){
+      return num;
+    }
 
     void takeDamage(int dmg) {
       setHp(hp - dmg);
@@ -56,7 +60,7 @@ class Player {
     };
 
     Hand& getHand() {
-      return hand;
+      return *hand.get();
     }
 
     Board& getBoard();
