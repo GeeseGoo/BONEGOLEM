@@ -9,16 +9,20 @@
 class Game;
 
 // this gets created by the KillMinion command, but should be used whenever a minion leaves the board (even if it isn't dead)
-class LeavePlay : public Action {
+class LeavePlay : public Action
+{
   Minion &minion;
   Board &board;
+
 public:
   LeavePlay(Minion &minion, Board &board) : minion(minion), board(board) {}
-  void execute(Game &game) {
+  void execute(Game &game)
+  {
     std::cout << "removing minion from board: " << minion.getName() << std::endl;
     board.removeMinion(minion);
   }
-  bool checkTrigger(Trigger* trig, Board &board, Game &game) override {
+  bool checkTrigger(Trigger *trig, Board &board, Game &game) override
+  {
     return trig->beTriggered(this, board, game);
   }
 };

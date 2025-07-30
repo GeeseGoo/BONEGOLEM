@@ -3,3 +3,4 @@
 **/*.d
 src/sorcery
 sorcery
+*.zip

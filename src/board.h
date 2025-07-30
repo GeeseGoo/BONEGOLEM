@@ -19,27 +19,20 @@ class Board
 public:
   void addCard(Minion *minion);
   void addCard(Ritual *r);
-  void trigger(Action *action, Game& game);
+  void trigger(Action *action, Game &game);
 
   Minion *getMinion(int i);
   std::vector<Minion *> getMinions();
-  Ritual *getRitual() {
+  Ritual *getRitual()
+  {
     return ritual.get();
   };
-  void removeMinion(Minion &minion) {
-    for (auto m = minions.begin(); m != minions.end(); ++m) {
-      if (m->get() == &minion) {
-        m->release();
-        minions.erase(m);
-        return;
-      }
-    }
-    throw std::runtime_error("Minion not found to be erased");
-  }
+  void removeMinion(Minion &minion);
 
   // Pick up the new enchantment and return what was previously at the index
-  Minion* attach(Enchantment* newEnchantment, int index);
-
+  Minion *attach(Enchantment *newEnchantment, int index);
+  void detach(int index); // detach top enchantment of minion
+  void detachAll(int index);
 };
 
 #endif // BOARD_H

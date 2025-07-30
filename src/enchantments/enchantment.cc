@@ -2,105 +2,140 @@
 #include "../player.h"
 #include "../actions/enterplay.h"
 
-Enchantment::Enchantment(std::string name, int cost, int playerNum): Minion(name, cost, 0, 0, 0, playerNum) {}
+Enchantment::Enchantment(std::string name, int cost, int playerNum) : Minion(name, cost, 0, 0, 0, playerNum) {}
 
-std::string Enchantment::getTopLeft(){
-    if(!next) return enchantmentTopLeft();
+std::string Enchantment::getTopLeft()
+{
+    if (!next)
+        return enchantmentTopLeft();
     return next->getTopLeft();
 }
 
-std::string Enchantment::getBottomLeft(){
-    if(!next) return enchantmentBottomLeft();
+std::string Enchantment::getBottomLeft()
+{
+    if (!next)
+        return enchantmentBottomLeft();
     return next->getBottomLeft();
 }
 
-std::string Enchantment::getBottomRight(){
-    if(!next) return enchantmentBottomRight();
+std::string Enchantment::getBottomRight()
+{
+    if (!next)
+        return enchantmentBottomRight();
     return next->getBottomRight();
 }
 
-std::string Enchantment::description() {
-    if(!next) return enchantmentDescription();
+std::string Enchantment::description()
+{
+    if (!next)
+        return enchantmentDescription();
     return next->description();
 }
 
-std::string Enchantment::enchantmentDescription() {
+std::string Enchantment::enchantmentDescription()
+{
     return "";
 }
 
-int Enchantment::getCost() {
-    if(next){
+int Enchantment::getCost()
+{
+    if (next)
+    {
         return next->getCost();
-    }else{
+    }
+    else
+    {
         return cost;
     }
 }
 
-std::string Enchantment::enchantmentTopLeft(){
+std::string Enchantment::enchantmentTopLeft()
+{
     return "";
 }
 
-std::string Enchantment::enchantmentBottomLeft(){
+std::string Enchantment::enchantmentBottomLeft()
+{
     return "";
 }
 
-std::string Enchantment::enchantmentBottomRight(){
+std::string Enchantment::enchantmentBottomRight()
+{
     return "";
 }
 
-int Enchantment::enchantmentCost(){
+int Enchantment::enchantmentCost()
+{
     return cost;
 }
 
-
-Minion* Enchantment::getNext(){
+Minion *Enchantment::getNext()
+{
     return next.get();
 }
 
-void Enchantment::play(Game &game, Player &player, EnterPlay* action){
+Minion *Enchantment::extractNext()
+{
+    return next.release();
+}
+
+void Enchantment::play(Game &game, Player &player, EnterPlay *action)
+{
     int index = action->getOnto();
     next = std::unique_ptr<Minion>(player.getBoard().attach(this, index));
-    std::cout << "Attached " << this->name << " onto " << this->getName() << std::endl; 
+    std::cout << "Attached " << this->name << " onto " << this->getName() << std::endl;
     onEquip();
 }
 
-std::string Enchantment::getName() {
-    if(!next) return name;
+std::string Enchantment::getName()
+{
+    if (!next)
+        return name;
     return next->getName();
 }
 
-void Enchantment::onEquip(){}
-void Enchantment::onRemove(){}
+void Enchantment::onEquip() {}
+void Enchantment::onRemove() {}
 
-bool Enchantment::isEnchantment(){
+bool Enchantment::isEnchantment()
+{
     return true;
 }
 
-void Enchantment::takeDamage(int dmg){
+void Enchantment::takeDamage(int dmg)
+{
     next->takeDamage(dmg);
 }
-int Enchantment::getAtk() const {
+int Enchantment::getAtk() const
+{
     return next->getAtk();
 }
-int Enchantment::getDef() const {
+int Enchantment::getDef() const
+{
     return next->getDef();
 }
-void Enchantment::setAtk(int val) {
+void Enchantment::setAtk(int val)
+{
     next->setAtk(val);
 }
-void Enchantment::setDef(int val) {
+void Enchantment::setDef(int val)
+{
     next->setDef(val);
 }
-int Enchantment::getActions() const {
+int Enchantment::getActions() const
+{
     return next->getActions();
 }
-int Enchantment::getAbilityCost() const {
+int Enchantment::getAbilityCost() const
+{
     return next->getAbilityCost();
 }
 
-std::string Enchantment::getType() {
-    if(!next) return "Enchantment";
+std::string Enchantment::getType()
+{
+    if (!next)
+        return "Enchantment";
     return "Minion";
 }
 
-Enchantment::~Enchantment(){}
+Enchantment::~Enchantment() {}
