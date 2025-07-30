@@ -21,6 +21,7 @@ public:
   virtual std::string enchantmentBottomLeft();
   virtual std::string enchantmentBottomRight();
   virtual std::string enchantmentDescription();
+  virtual std::string enchantmentName();
 
   int enchantmentCost();
   virtual void onEquip();

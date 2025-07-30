@@ -94,6 +94,12 @@ std::string Enchantment::getName()
     return next->getName();
 }
 
+std::string Enchantment::enchantmentName()
+{
+    return name;
+}
+
+
 void Enchantment::onEquip() {}
 void Enchantment::onRemove() {}
 
