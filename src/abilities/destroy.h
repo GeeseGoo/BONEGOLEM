@@ -15,7 +15,7 @@ class Destroy : public Ability {
     int playerNum;
     int minionIdx;
     void execute(Game &game, Card *card, Action *action, int player, int onto) override {
-        if(onto > 0){
+        if(onto >= 0){
             Minion& triggeringCard = *game.getPlayers().at(playerNum).getBoard().getMinion(minionIdx);
             game.action(make_unique<KillMinion>(triggeringCard, game.getPlayers().at(playerNum)));
         }else{
