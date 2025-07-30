@@ -12,8 +12,8 @@ class AttackMinion: public Action {
   public:
     AttackMinion(int attackerID, int attackeeID): attackerID(attackerID), attackeeID(attackeeID) {}
     void execute(Game& game);
-    void checkTrigger(Trigger* trig, Board &board, Game &game) override{
-      trig->beTriggered(this, board, game);
+    bool checkTrigger(Trigger* trig, Board &board, Game &game) override{
+      return trig->beTriggered(this, board, game);
     }
 };
 

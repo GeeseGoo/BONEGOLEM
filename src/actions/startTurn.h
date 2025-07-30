@@ -10,7 +10,7 @@ class StartTurn: public Action {
   StartTurn() {}
   void execute(Game &game) override;
   int getPlayerNum() {return playerNum;};
-  void checkTrigger(Trigger* trig, Board &board, Game &game) override;
+  bool checkTrigger(Trigger* trig, Board &board, Game &game) override;
 };
 
 

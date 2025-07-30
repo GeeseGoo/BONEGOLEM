@@ -21,7 +21,7 @@ public:
   int getOnto() const;
   Card* getUser() const;
   int getPlayer() const;
-  void checkTrigger(Trigger* trig, Board &board, Game &game) override;
+  bool checkTrigger(Trigger* trig, Board &board, Game &game) override;
 };
 
 #endif // USEABILITY_H

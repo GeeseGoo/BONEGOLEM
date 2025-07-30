@@ -18,7 +18,7 @@ public:
   MinionCreate(std::string name, int player) : name(name), player{player} {}
   void execute(Game &game) override;
   int getPlayer() const;
-  void checkTrigger(Trigger* trig, Board &board, Game &game) override;
+  bool checkTrigger(Trigger* trig, Board &board, Game &game) override;
 };
 
 #endif // ENTERPLAY_H

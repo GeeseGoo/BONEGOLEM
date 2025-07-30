@@ -24,15 +24,15 @@ protected:
 
 public:
   Trigger(std::unique_ptr<Ability> &&ability, Card *card) : ability(std::move(ability)), card(card) {};
-  void trigger(Action *action, Board &board, Game &game);
-  virtual void beTriggered(EndTurn *action, Board &board, Game &game) {};
-  virtual void beTriggered(StartTurn *action, Board &board, Game &game) {};
-  virtual void beTriggered(EnterPlay *action, Board &board, Game &game) {};
-  virtual void beTriggered(LeavePlay *action, Board &board, Game &game) {};
-  virtual void beTriggered(UseAbility *action, Board &board, Game &game) {};
-  virtual void beTriggered(AttackMinion *action, Board &board, Game &game) {};
-  virtual void beTriggered(AttackPlayer *action, Board &board, Game &game) {};
-  virtual void beTriggered(MinionCreate *action, Board &board, Game &game) {};
+  bool trigger(Action *action, Board &board, Game &game);
+  virtual bool beTriggered(EndTurn *action, Board &board, Game &game) {return false;}
+  virtual bool beTriggered(StartTurn *action, Board &board, Game &game) {return false;}
+  virtual bool beTriggered(EnterPlay *action, Board &board, Game &game) {return false;}
+  virtual bool beTriggered(LeavePlay *action, Board &board, Game &game) {return false;}
+  virtual bool beTriggered(UseAbility *action, Board &board, Game &game) {return false;}
+  virtual bool beTriggered(AttackMinion *action, Board &board, Game &game) {return false;}
+  virtual bool beTriggered(AttackPlayer *action, Board &board, Game &game) {return false;}
+  virtual bool beTriggered(MinionCreate *action, Board &board, Game &game) {return false;}
 };
 
 #endif // TRIGGER_H

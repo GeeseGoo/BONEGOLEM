@@ -12,7 +12,7 @@ void StartTurn::execute(Game &game) {
     std::cout << "NOT notifying start turn triggers" << std::endl;
 };
 
-void StartTurn::checkTrigger(Trigger* trig, Board &board, Game &game){
-trig->beTriggered(this, board, game);
+bool StartTurn::checkTrigger(Trigger* trig, Board &board, Game &game){
+    return trig->beTriggered(this, board, game);
 }
 

@@ -10,7 +10,7 @@ class EndTurn: public Action {
 
   int getPlayerNum() { return playerNum;};
   void execute(Game &game) override;
-  void checkTrigger(Trigger* trig, Board &board, Game &game) override;
+  bool checkTrigger(Trigger* trig, Board &board, Game &game) override;
 };
 
 

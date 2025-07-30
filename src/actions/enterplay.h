@@ -23,7 +23,7 @@ public:
   int getPlayer() const;
   bool isMinion() {return minion;}
   void iAmMinion() {minion = true;}
-  void checkTrigger(Trigger* trig, Board &board, Game &game) override;
+  bool checkTrigger(Trigger* trig, Board &board, Game &game) override;
 };
 
 #endif // ENTERPLAY_H

@@ -18,7 +18,7 @@ int EnterPlay::getPlayer() const {
     return player;
 }
 
-void EnterPlay::checkTrigger(Trigger* trig, Board &board, Game &game){
-  trig->beTriggered(this, board, game);
+bool EnterPlay::checkTrigger(Trigger* trig, Board &board, Game &game){
+  return trig->beTriggered(this, board, game);
 }
 

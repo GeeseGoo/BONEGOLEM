@@ -6,13 +6,13 @@
 #include "../game.h"
 
 class StartTurnTrigger: public Trigger {
-
   public:
     StartTurnTrigger(std::unique_ptr<Ability>&& ability, Card* card): Trigger(std::move(ability), card) {};
-    void beTriggered(StartTurn* action, Board& board, Game& game) override{
+    bool beTriggered(StartTurn* action, Board& board, Game& game) override{
       std::cout << "start turn triggered" << std::endl;
-        ability->activate(game, card, action, game.getPlayerIdx(), -1);
-    };
+      ability->activate(game, card, action, game.getPlayerIdx(), -1);
+      return true;
+    }
 };
 
 

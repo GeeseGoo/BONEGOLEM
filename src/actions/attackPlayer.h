@@ -9,8 +9,8 @@ class AttackPlayer: public Action {
   public:
     AttackPlayer(int attackerID): attackerID(attackerID) {}
     void execute(Game& game);
-    void checkTrigger(Trigger* trig, Board &board, Game &game) override{
-      trig->beTriggered(this, board, game);
+    bool checkTrigger(Trigger* trig, Board &board, Game &game) override{
+      return trig->beTriggered(this, board, game);
     }
 };
 

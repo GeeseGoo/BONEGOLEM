@@ -15,8 +15,8 @@ int UseAbility::getOnto() const {
 int UseAbility::getPlayer() const {
     return player;
 }
-void UseAbility::checkTrigger(Trigger* trig, Board &board, Game &game){
-trig->beTriggered(this, board, game);
+bool UseAbility::checkTrigger(Trigger* trig, Board &board, Game &game){
+    return trig->beTriggered(this, board, game);
 }
 
 Card* UseAbility::getUser() const {

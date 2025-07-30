@@ -21,8 +21,8 @@ public:
     std::cout << "removing minion from board: " << minion.getName() << std::endl;
     board.removeMinion(minion);
   }
-  void checkTrigger(Trigger* trig, Board &board, Game &game) override{
-    trig->beTriggered(this, board, game);
+  bool checkTrigger(Trigger* trig, Board &board, Game &game) override{
+    return trig->beTriggered(this, board, game);
   }
 
 };
