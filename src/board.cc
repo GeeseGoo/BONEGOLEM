@@ -84,3 +84,7 @@ void Board::removeMinion(Minion &minion)
     }
     throw std::runtime_error("Minion not found to be erased");
 }
+
+void Board::removeRitual(){
+    ritual.reset();
+}

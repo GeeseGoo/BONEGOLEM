@@ -33,6 +33,7 @@ public:
   Minion *attach(Enchantment *newEnchantment, int index);
   void detach(int index); // detach top enchantment of minion
   void detachAll(int index);
+  void removeRitual();
 };
 
 #endif // BOARD_H

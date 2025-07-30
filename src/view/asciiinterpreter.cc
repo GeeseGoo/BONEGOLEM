@@ -55,11 +55,11 @@ void AsciiInterpreter::displayMinion(int index){
     }
     while(enchantmentDisplay.size() > 0){
         vector<card_template_t> line = {};
-        for(int i = 0; i < 5 && enchantmentDisplay.size() > 0; i++){
+        for(unsigned int i = 0; i < 5 && enchantmentDisplay.size() > 0; i++){
             line.push_back(enchantmentDisplay.top());
             enchantmentDisplay.pop();
         }
-        for(int i = 0; i < line.at(0).size(); i++){
+        for(unsigned int i = 0; i < line.at(0).size(); i++){
             for(auto row : line){
                 cout << row.at(i);
             }

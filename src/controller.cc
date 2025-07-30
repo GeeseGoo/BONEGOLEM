@@ -149,23 +149,29 @@ void Controller::play(istream &in)
       if (tokens.size() == 2)
       {
         std::cout << game->getPlayerIdx() << " is player";
-        game->action(make_unique<EnterPlay>(std::stoi(tokens[1]), game->getPlayerIdx(), -1));
+        game->action(make_unique<EnterPlay>(std::stoi(tokens[1]) - 1, game->getPlayerIdx(), -1));
       }
       if (tokens.size() == 4)
       {
-        game->action(make_unique<EnterPlay>(std::stoi(tokens[1]), std::stoi(tokens[2]), std::stoi(tokens[3])));
+        if(tokens[3] == "r"){
+          game->action(make_unique<EnterPlay>(std::stoi(tokens[1]) - 1, std::stoi(tokens[2]) - 1, -1));
+        }else{
+          game->action(make_unique<EnterPlay>(std::stoi(tokens[1]) - 1, std::stoi(tokens[2]) - 1, std::stoi(tokens[3]) - 1));
+        }
       }
     }
     if (tokens[0] == "use")
     {
       if (tokens.size() == 2)
       {
-        game->action(make_unique<UseAbility>(std::stoi(tokens[1]), game->getPlayerIdx(), -1));
+        game->action(make_unique<UseAbility>(std::stoi(tokens[1]) - 1, game->getPlayerIdx(), -1));
       }
       if (tokens.size() == 4)
-      {
-        game->action(make_unique<UseAbility>(std::stoi(tokens[1]), std::stoi(tokens[2]), std::stoi(tokens[3])));
-      }
+        if(tokens[3] == "r"){
+          game->action(make_unique<UseAbility>(std::stoi(tokens[1]) - 1, std::stoi(tokens[2]) - 1, -1));
+        }else{
+          game->action(make_unique<UseAbility>(std::stoi(tokens[1]) - 1, std::stoi(tokens[2]) - 1, std::stoi(tokens[3]) - 1));
+        }
       cout << "use" << endl;
     }
     if (tokens[0] == "inspect")

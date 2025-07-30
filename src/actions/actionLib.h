@@ -9,5 +9,6 @@
 #include "leaveplay.h"
 #include "useability.h"
 #include "killminion.h"
+#include "expireritual.h"
 
 #endif // ACTIONLIB_H
