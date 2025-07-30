@@ -18,7 +18,7 @@ public:
       return;
     }
     std::cout << "minion enter triggered" << std::endl;
-    ability->activate(game, card, action, action->getPlayer(), action->getOnto());
+    ability->activate(game, card, action, action->getPlayer(), game.getPlayers().at(action->getPlayer()).getBoard().getMinions().size()-1);
   };
 };
 

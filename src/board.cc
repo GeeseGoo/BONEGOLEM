@@ -16,11 +16,11 @@ void Board::addCard(Ritual *r)
 }
 Minion *Board::getMinion(int i)
 {
-    if (minions.size() <= i)
+    if (minions.size() <= 0)
         throw std::runtime_error("empty board");
-    if (!(minions.at(i)))
+    if (i < 0 || i >= minions.size() || !(minions.at(i)))
     {
-        throw std::runtime_error("no minion at index" + std::to_string(i));
+        throw std::runtime_error("no minion at index: " + std::to_string(i));
     }
     return minions.at(i).get();
 }
