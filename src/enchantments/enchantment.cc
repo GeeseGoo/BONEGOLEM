@@ -70,7 +70,8 @@ std::string Enchantment::getName() {
 }
 
 void Enchantment::onEquip(){}
-    
+void Enchantment::onRemove(){}
+
 bool Enchantment::isEnchantment(){
     return true;
 }

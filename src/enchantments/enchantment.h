@@ -21,6 +21,7 @@ protected:
     virtual std::string enchantmentBottomRight();
     virtual std::string enchantmentDescription();
     virtual void onEquip();
+    virtual void onRemove();
     int getActions() const;
     int getAbilityCost() const;
     
