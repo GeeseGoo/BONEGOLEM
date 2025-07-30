@@ -1,7 +1,7 @@
 #ifndef POTIONSELLER_H
 #define POTIONSELLER_H
 #include "../minions/minion.h"
-#include "../triggers/endturn.h"
+#include "../triggers/endturntrigger.h"
 #include "../abilities/allminionbuff.h"
 #include "../lib.h"
 
