@@ -5,6 +5,7 @@
 #include "../board.h"
 #include "../card.h"
 #include <ostream>
+#include "../enchantments/enchantment.h"
 using namespace std;
 
 // helper function for calling correct display function from ascii_graphics
@@ -22,6 +23,20 @@ card_template_t makeCardDisplay(Card* const card){
     }
 }
 
+card_template_t makeEnchantmentDisplay(Enchantment* const card){
+    if(!card){
+        return CARD_TEMPLATE_BORDER;
+    }else if(card->enchantmentTopLeft() != "" && card->enchantmentBottomLeft() != "" && card->enchantmentBottomRight() != ""){
+        return display_tl_bl_br_card(card->enchantmentName(), card->enchantmentCost(), "Enchantment", card->enchantmentDescription(), card->enchantmentTopLeft(), card->enchantmentBottomLeft(), card->enchantmentBottomRight());
+    }else if(card->enchantmentBottomLeft() != "" && card->enchantmentBottomRight() != ""){
+        return display_bl_br_card(card->enchantmentName(), card->enchantmentCost(), "Enchantment", card->enchantmentDescription(), card->enchantmentBottomLeft(), card->enchantmentBottomRight());
+    }else if(card->enchantmentTopLeft() != "" && card->enchantmentBottomRight() != ""){
+        return display_tl_br_card(card->enchantmentName(), card->enchantmentCost(), "Enchantment", card->enchantmentDescription(), card->enchantmentTopLeft(), card->enchantmentBottomRight());
+    }else{
+        return display_basic_card(card->enchantmentName(), card->enchantmentCost(), "Enchantment", card->enchantmentDescription());
+    }
+}
+
 void AsciiInterpreter::displayMinion(int index){
     if(game->getActivePlayer().getBoard().getMinions().size() <= index || game->getActivePlayer().getBoard().getMinion(index) == nullptr){
         cout << "No minion at that index."  << endl;
@@ -32,7 +47,25 @@ void AsciiInterpreter::displayMinion(int index){
     for(string line : output){
         cout << line << endl;
     }
-    // should display enchantments here
+    stack<card_template_t> enchantmentDisplay = {};
+    while(minion->isEnchantment()){
+        Enchantment* enchant = dynamic_cast<Enchantment*>(minion);
+        enchantmentDisplay.push(makeEnchantmentDisplay(enchant));
+        minion = enchant->getNext();
+    }
+    while(enchantmentDisplay.size() > 0){
+        vector<card_template_t> line = {};
+        for(int i = 0; i < 5 && enchantmentDisplay.size() > 0; i++){
+            line.push_back(enchantmentDisplay.top());
+            enchantmentDisplay.pop();
+        }
+        for(int i = 0; i < line.at(0).size(); i++){
+            for(auto row : line){
+                cout << row.at(i);
+            }
+            cout << endl;
+        }
+    }
 }
 
 void AsciiInterpreter::displayHand(){
