@@ -3,14 +3,15 @@
 
 void UseAbility::execute(Game &game)
 {
+    cout << "executing ability use for " << cardID << endl;
     // code for checking and lowering player magic
     int oldMagic = game.getPlayers().at(player).getMagic();
-    if (!game.getPlayers().at(player).deltaMagic(game.getActivePlayer().getBoard().getMinion(cardID)->getAbilityCost()))
+    if(!game.getPlayers().at(player).deltaMagic(game.getActivePlayer().getBoard().getMinion(cardID)->getAbilityCost())){
         return;
-    else
-    {
+    } else {
         game.getPlayers().at(player).setMagic(oldMagic);
     }
+    
     if (!game.getPlayers().at(player).getBoard().getMinion(cardID)->deltaActions(1))
         return;
 
@@ -36,3 +37,10 @@ Card *UseAbility::getUser() const
 {
     return user;
 }
+
+void UseAbility::act(Game& game){
+    // We want to swap these here so we can manage the player magic and get player info first
+    execute(game);
+    game.trigger(this);
+}
+

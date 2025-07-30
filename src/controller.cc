@@ -166,13 +166,14 @@ void Controller::play(istream &in)
       {
         game->action(make_unique<UseAbility>(std::stoi(tokens[1]) - 1, game->getPlayerIdx(), -1));
       }
-      if (tokens.size() == 4)
+      if (tokens.size() == 4){
         if(tokens[3] == "r"){
           game->action(make_unique<UseAbility>(std::stoi(tokens[1]) - 1, std::stoi(tokens[2]) - 1, -1));
         }else{
           game->action(make_unique<UseAbility>(std::stoi(tokens[1]) - 1, std::stoi(tokens[2]) - 1, std::stoi(tokens[3]) - 1));
         }
-      cout << "use" << endl;
+        cout << "use" << endl;
+      }
     }
     if (tokens[0] == "inspect")
     {

@@ -23,6 +23,7 @@ public:
   Card* getUser() const;
   int getPlayer() const;
   bool checkTrigger(Trigger* trig, Board &board, Game &game) override;
+  void act(Game& game) override;
 };
 
 #endif // USEABILITY_H

@@ -1,5 +1,5 @@
-#ifndef ENTERING_MINION_BUFF_H
-#define ENTERING_MINION_BUFF_H
+#ifndef DESTROY_H
+#define DESTROY_H
 
 #include "ability.h"
 #include "../game.h"
@@ -10,20 +10,20 @@
 #include "../actions/enterplay.h"
 #include "../actions/expireritual.h"
 
-// For buffing a minion that does the triggering
-// eg buff any minion that enters the board
-class Destroy : public Ability
-{
+// destroys a specific minion/ritual (use onto=-1 for ritual)
+class Destroy : public Ability {
+    int playerNum;
+    int minionIdx;
     void execute(Game &game, Card *card, Action *action, int player, int onto) override {
-        if(onto > 0){
-            Minion* triggeringCard = game.getPlayers().at(player).getBoard().getMinion(onto);
-            game.action(make_unique<KillMinion>(triggeringCard, game.getPlayers().at(player)));
+        if(onto >= 0){
+            Minion& triggeringCard = *game.getPlayers().at(playerNum).getBoard().getMinion(minionIdx);
+            game.action(make_unique<KillMinion>(triggeringCard, game.getPlayers().at(playerNum)));
         }else{
-            game.action(make_unique<ExpireRitual>(player));
+            game.action(make_unique<ExpireRitual>(playerNum));
         }
     };
   public:
-    Destroy(int atkBuff, int defBuff);
+    Destroy(int playerNum, int minionIdx) : playerNum{playerNum}, minionIdx{minionIdx} {};
 };
 
-#endif // ENTERING_MINION_BUFF_H
+#endif // DESTROY_H

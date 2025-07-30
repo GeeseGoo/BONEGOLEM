@@ -72,7 +72,7 @@ void Board::detachAll(int index)
 
 void Board::removeMinion(Minion &minion)
 {
-    for (int i = 0; i < minions.size(); ++i)
+    for (unsigned int i = 0; i < minions.size(); ++i)
     {
         if (minions[i]->getBase() == &minion)
         {
