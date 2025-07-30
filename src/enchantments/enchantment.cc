@@ -102,3 +102,5 @@ std::string Enchantment::getType() {
     if(!next) return "Enchantment";
     return "Minion";
 }
+
+Enchantment::~Enchantment(){}

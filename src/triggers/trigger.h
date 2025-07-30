@@ -25,7 +25,7 @@ protected:
 
 public:
   Trigger(std::unique_ptr<Ability> &&ability, Card *card) : ability(std::move(ability)), card(card) {};
-  virtual ~Trigger() = default;
+  virtual ~Trigger() = 0;
   bool trigger(Action *action, Board &board, Game &game);
   virtual bool beTriggered(EndTurn *action, Board &board, Game &game) {return false;}
   virtual bool beTriggered(StartTurn *action, Board &board, Game &game) {return false;}

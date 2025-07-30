@@ -17,7 +17,6 @@ class Minion: public Card {
     int abilityCost = -1; // -1 means minion does not have an activated ability
     bool isDead = true;
     Game* game = nullptr;
-    Minion* base = this;
   public:
     Minion(std::string name, int cost, int atk, int def, int actions, int playerNum);
     Minion(std::string name, int cost, std::unique_ptr<Trigger> trigger, int atk, int def, int actions, int playerNum, int abilityCost = -1);

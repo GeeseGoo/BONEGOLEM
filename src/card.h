@@ -23,9 +23,7 @@ class Card {
 
     virtual void play(Game &game, Player &player, EnterPlay* action) = 0;
 
-    virtual std::string getName() {
-      return name;
-    };
+    virtual std::string getName() {return name;}
     virtual int getCost() {return cost;}
     virtual std::string getBottomLeft() = 0;
     virtual std::string getBottomRight() = 0;
