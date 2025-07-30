@@ -20,6 +20,7 @@ class Card {
   public:
     Card(std::string name, int cost, int playerNum);
     Card(std::string name, int cost, std::unique_ptr<Trigger> trigger, int playerNum);
+    virtual ~Card() = default;
 
     virtual void play(Game &game, Player &player, EnterPlay* action) = 0;
 
@@ -32,7 +33,6 @@ class Card {
     virtual std::string getTopLeft() = 0;
     virtual std::string description() = 0;
     virtual std::string getType() = 0;
-
     Trigger* getTrigger();
 };
 

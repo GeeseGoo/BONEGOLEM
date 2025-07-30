@@ -120,6 +120,7 @@ void Controller::play(istream &in)
     if (tokens[0] == "quit")
     {
       cout << "quit" << endl;
+      break;
     }
     if (tokens[0] == "draw" && testing)
     {
@@ -129,6 +130,7 @@ void Controller::play(istream &in)
     if (tokens[0] == "discard")
     {
       int index = std::stoi(tokens[1]);
+      game->getActivePlayer().getHand().pop(index);
       cout << "discard" << endl;
     }
     if (tokens[0] == "attack")

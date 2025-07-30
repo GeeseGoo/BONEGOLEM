@@ -24,16 +24,15 @@ class Hand {
 
 
     std::unique_ptr<Card> extractCard(int i) {
-      if (!cards[i]) {
+      if (!cards.at(i)) {
         throw std::runtime_error("Card not found: " + std::to_string(i));
       }
-
-      auto card = std::move(cards[i]);
+      std::unique_ptr<Card> card = std::move(cards[i]);
       cards.erase(cards.begin() + i);
       return card;
     }
 
-    void pop(int);
+    void pop(unsigned int);
     bool isHandFull() const;
     std::size_t numCards() const;
 };

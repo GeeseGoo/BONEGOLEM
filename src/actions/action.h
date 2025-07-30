@@ -8,6 +8,8 @@ class Board;
 class Action{
     virtual void execute(Game& game) = 0;
   public:
+    virtual ~Action() = default;  
+
     // most of the time we want to do what the action is before we trigger any effects
     // but sometimes this will change...
     virtual void act(Game& game);

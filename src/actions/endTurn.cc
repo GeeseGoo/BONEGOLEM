@@ -8,6 +8,6 @@ void EndTurn::execute(Game &game) {
 }
 
 bool EndTurn::checkTrigger(Trigger* trig, Board &board, Game &game){
-trig->beTriggered(this, board, game);
+    return trig->beTriggered(this, board, game);
 }
 

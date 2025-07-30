@@ -20,3 +20,16 @@ void Hand::add(string cardName) {
 std::size_t Hand::numCards() const {
   return cards.size();
 }
+
+void Hand::pop(unsigned int i){
+  if (!cards.at(i)) {
+    throw std::runtime_error("Card not found: " + std::to_string(i));
+  }
+  std::vector<std::unique_ptr<Card>> newCards;
+  for(unsigned int x = 0; x < cards.size(); x++){
+    if(x != i){
+      newCards.push_back(std::move(cards.at(x)));
+    }
+  }
+  cards = std::move(newCards);
+}
