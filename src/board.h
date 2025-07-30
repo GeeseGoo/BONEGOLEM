@@ -22,23 +22,20 @@ public:
 
   Minion *getMinion(int i);
   std::vector<Minion *> getMinions();
-  Ritual *getRitual()
-  {
+  Ritual *getRitual() {
     return ritual.get();
   };
-  void removeMinion(Minion &minion)
-  {
-    for (auto m = minions.begin(); m != minions.end(); ++m)
-    {
-      if (m->get() == &minion)
-      {
+  void removeMinion(Minion &minion) {
+    for (auto m = minions.begin(); m != minions.end(); ++m) {
+      if (m->get() == &minion) {
+        m->release();
         minions.erase(m);
         return;
       }
     }
-
     throw std::runtime_error("Minion not found to be erased");
   }
+
 };
 
 #endif // BOARD_H

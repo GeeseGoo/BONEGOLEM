@@ -16,6 +16,7 @@ class UseAbility;
 class AttackPlayer;
 class AttackMinion;
 class MinionCreate;
+class KillMinion;
 class Trigger
 {
 protected:
@@ -34,6 +35,7 @@ public:
   virtual bool beTriggered(AttackMinion *action, Board &board, Game &game) {return false;}
   virtual bool beTriggered(AttackPlayer *action, Board &board, Game &game) {return false;}
   virtual bool beTriggered(MinionCreate *action, Board &board, Game &game) {return false;}
+  virtual bool beTriggered(KillMinion *action, Board &board, Game &game) {return false;}
 };
 
 #endif // TRIGGER_H

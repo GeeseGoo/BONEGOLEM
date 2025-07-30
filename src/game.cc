@@ -45,11 +45,6 @@ vector<Board *> Game::getBoards()
   return boards;
 }
 
-void Game::takeDamage(Minion &minion, Board &board, int dmg)
-{
+void Game::takeDamage(Minion &minion, Board &board, int dmg) {
   minion.takeDamage(dmg);
-  if (minion.getDef() <= 0)
-  {
-    this->action(make_unique<LeavePlay>(minion, board));
-  }
 }

@@ -8,5 +8,6 @@
 #include "enterplay.h"
 #include "leaveplay.h"
 #include "useability.h"
+#include "killminion.h"
 
 #endif // ACTIONLIB_H

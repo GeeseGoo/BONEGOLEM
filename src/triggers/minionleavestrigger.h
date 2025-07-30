@@ -5,9 +5,7 @@
 #include "trigger.h"
 #include "../game.h"
 
-class MinionLeavesTrigger : public Trigger
-{
-
+class MinionLeavesTrigger : public Trigger {
 public:
   MinionLeavesTrigger(std::unique_ptr<Ability> &&ability, Card *card) : Trigger(std::move(ability), card) {};
   bool beTriggered(LeavePlay *action, Board &board, Game &game) override {

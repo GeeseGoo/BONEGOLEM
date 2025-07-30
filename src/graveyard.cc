@@ -1,4 +1,6 @@
 #include "graveyard.h"
+#include "minions/minion.h"
+#include "lib.h"
 
 Card* Graveyard::top(){
     if(cards.size() == 0){
@@ -6,3 +8,8 @@ Card* Graveyard::top(){
     }
     return cards.top().get();
 }
+
+void Graveyard::add(Minion* card) {
+    cards.push(std::unique_ptr<Minion>(card));
+}
+

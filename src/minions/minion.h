@@ -1,10 +1,10 @@
 #ifndef MINION_H
 #define MINION_H
 
-
 #include "../lib.h"
 #include "../card.h"
 #include "../triggers/trigger.h"
+#include "../actions/killminion.h"
 
 class Board;
 class Player;
@@ -14,19 +14,14 @@ class Minion: public Card {
   int def;
   int actions;
   int abilityCost = -1; // -1 means minion does not have an activated ability
+  bool isDead = true;
+  Game* game = nullptr;
   public:
     Minion(std::string name, int cost, int atk, int def, int actions, int playerNum);
-    Minion(std::string name, int cost, std::unique_ptr<Trigger> trigger, int def, int atk, int actions, int playerNum, int abilityCost = -1);
+    Minion(std::string name, int cost, std::unique_ptr<Trigger> trigger, int atk, int def, int actions, int playerNum, int abilityCost = -1);
     virtual void play(Game &game, Player &player, EnterPlay* action) override;
-    void attack(Minion& other);
     void attack(Player& other);
-    void takeDamage(int dmg) {
-        def -= dmg;
-        if (def<= 0) {
-          std::cout << name << " is ded"<< std::endl;
-        }
-    };
-
+    void takeDamage(int dmg);
     virtual int getAtk() const {return atk;}
     virtual int getDef() const {return def;}
     void setAtk(int val) {atk = val;}

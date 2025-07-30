@@ -7,24 +7,18 @@
 #include "../actions/enterplay.h"
 using namespace std;
 
-void Minion::attack(Player &other)
-{
+void Minion::attack(Player &other) {
   cout << name << " attacked " << other.getName() << endl;
   other.takeDamage(atk);
 }
 
-void Minion::attack(Minion &other)
-{
-  cout << name << " attacked " << other.getName() << endl;
-  other.takeDamage(atk);
-}
+Minion::Minion(string name, int cost, int atk, int def, int actions, int playerNum) : Card(name, cost, playerNum), atk(atk), def(def), actions(actions) {}
 
-Minion::Minion(string name, int cost, int def, int atk, int actions, int playerNum) : Card(name, cost, playerNum), atk(atk), def(def), actions(actions) {}
+Minion::Minion(string name, int cost, unique_ptr<Trigger> trigger, int atk, int def, int actions, int playerNum, int abilityCost) : Card(name, cost, std::move(trigger), playerNum), atk(atk), def(def), actions(actions), abilityCost(abilityCost) {}
 
-Minion::Minion(string name, int cost, unique_ptr<Trigger> trigger, int def, int atk, int actions, int playerNum, int abilityCost) : Card(name, cost, std::move(trigger), playerNum), atk(atk), def(def), actions(actions), abilityCost(abilityCost) {}
-
-void Minion::play(Game &game, Player &player, EnterPlay* action)
-{
+void Minion::play(Game &game, Player &player, EnterPlay* action) {
+  this->game = &game;
+  isDead = false;
   action->iAmMinion();
   game.getActivePlayer().getBoard().addCard(this);
 }
@@ -48,5 +42,17 @@ string Minion::getTopLeft()
   else
   {
     return to_string(abilityCost);
+  }
+}
+
+void Minion::takeDamage(int dmg) {
+  if(!game){
+    throw std::runtime_error("Minion has been attacked without being played.");
+  }
+  def -= dmg;
+  if (def<= 0 && !isDead) {
+    isDead = true;
+    std::cout << name << " is ded"<< std::endl;
+    game->action(make_unique<KillMinion>(*this, game->getPlayers().at(playerNum)));
   }
 }

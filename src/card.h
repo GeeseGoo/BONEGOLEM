@@ -12,9 +12,8 @@ class EnterPlay;
 
 class Card {
   std::unique_ptr<Trigger> trigger;
-  int playerNum;
-  
   protected:
+    int playerNum;
     std::string name; 
     int cost; 
   public:
