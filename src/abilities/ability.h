@@ -13,6 +13,7 @@ class Ability {
     void activate(Game& game, Card* card, Action* action, int player, int onto) {
       execute(game, card, action, player, onto);
     };
+    virtual ~Ability() = default;
 };
 
 

@@ -15,6 +15,7 @@ class LeavePlay;
 class UseAbility;
 class AttackPlayer;
 class AttackMinion;
+class MinionCreate;
 class Trigger
 {
 protected:
@@ -31,6 +32,7 @@ public:
   virtual void beTriggered(UseAbility *action, Board &board, Game &game) {};
   virtual void beTriggered(AttackMinion *action, Board &board, Game &game) {};
   virtual void beTriggered(AttackPlayer *action, Board &board, Game &game) {};
+  virtual void beTriggered(MinionCreate *action, Board &board, Game &game) {};
 };
 
 #endif // TRIGGER_H

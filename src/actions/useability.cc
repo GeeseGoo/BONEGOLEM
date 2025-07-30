@@ -5,6 +5,7 @@ void UseAbility::execute(Game &game)
 {
     // code for checking and lowering player magic
     validUse = true;
+    user = game.getPlayers().at(player).getBoard().getMinion(cardID);
 }
 
 int UseAbility::getOnto() const {
