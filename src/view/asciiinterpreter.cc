@@ -24,7 +24,7 @@ card_template_t makeCardDisplay(Card* const card){
 
 void AsciiInterpreter::displayMinion(int index){
     if(game->getActivePlayer().getBoard().getMinions().size() <= index || game->getActivePlayer().getBoard().getMinion(index) == nullptr){
-        cout << "No minion at that index." << endl;
+        cout << "No minion at that index."  << endl;
         return;
     }
     Minion* minion = game->getActivePlayer().getBoard().getMinion(index);

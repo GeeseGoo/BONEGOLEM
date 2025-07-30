@@ -2,8 +2,7 @@
 #include "minions/minion.h"
 #include "spells/spell.h"
 #include "rituals/ritual.h"
-#include <string>
-#include <stdexcept>
+#include "enchantments/enchantment.h"
 #include "board.h"
 
 void Board::addCard(Minion *minion)
@@ -43,3 +42,10 @@ std::vector<Minion *> Board::getMinions()
     }
     return result;
 }
+
+Minion* Board::attach(Enchantment* newEnchantment, int index){
+    Minion* old = minions.at(index).release();
+    minions.at(index) = std::unique_ptr<Enchantment>(newEnchantment);
+    return old;
+}
+

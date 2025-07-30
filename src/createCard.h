@@ -5,6 +5,7 @@
 #include "minions/minionLib.h"
 #include "spells/spelllib.h"
 #include "rituals/rituallib.h"
+#include "enchantments/enchantmentlib.h"
 #include "card.h"
 #include <stdexcept>
 
@@ -31,7 +32,7 @@ inline std::unique_ptr<Card> createCard(const std::string &cardName, int playerN
   // else if (cardName == "Raise Dead") return std::make_unique<RaiseDead>(playerNum);
   else if (cardName == "Blizzard")
     return std::make_unique<Blizzard>(playerNum);
-  // else if (cardName == "Giant Strength") return std::make_unique<GiantStrength>(playerNum);
+  else if (cardName == "Giant Strength") return std::make_unique<GiantStrength>(playerNum);
   // else if (cardName == "Magic Fatigue") return std::make_unique<MagicFatigue>(playerNum);
   // else if (cardName == "Silence") return std::make_unique<Silence>(playerNum);
   else if (cardName == "Dark Ritual")

@@ -10,6 +10,7 @@
 class Minion;
 class Trigger;
 class Action;
+class Enchantment;
 class Board
 {
   std::vector<std::unique_ptr<Minion>> minions;
@@ -35,6 +36,9 @@ public:
     }
     throw std::runtime_error("Minion not found to be erased");
   }
+
+  // Pick up the new enchantment and return what was previously at the index
+  Minion* attach(Enchantment* newEnchantment, int index);
 
 };
 
