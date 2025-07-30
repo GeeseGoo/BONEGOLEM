@@ -10,6 +10,7 @@ class GiantStrength: public Enchantment {
     std::string enchantmentBottomLeft() override {return "+2";}
     std::string enchantmentBottomRight() override {return "+2";}
     void onEquip() override {next->setAtk(next->getAtk()+2); next->setDef(next->getDef()+2);}
+    void onRemove() override {next->setAtk(next->getAtk()-2); next->setDef(next->getDef()-2);}
 };
 
 
