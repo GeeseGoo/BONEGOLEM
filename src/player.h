@@ -68,8 +68,6 @@ class Player {
     Graveyard& getGraveyard() {
       return graveyard;
     }
-
-    void dealDamage(int dmg);
     
     void addToDeck(std::string card);
     void action(Action*);

@@ -2,7 +2,7 @@
 #include "minions/minion.h"
 #include "lib.h"
 
-Card* Graveyard::top(){
+Minion* Graveyard::top(){
     if(cards.size() == 0){
         return nullptr;
     }

@@ -44,7 +44,3 @@ vector<Board *> Game::getBoards()
   }
   return boards;
 }
-
-void Game::takeDamage(Minion &minion, Board &board, int dmg) {
-  minion.takeDamage(dmg);
-}
