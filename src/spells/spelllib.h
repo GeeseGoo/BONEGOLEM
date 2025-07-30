@@ -3,5 +3,6 @@
 
 #include "blizzard.h"
 
+#include "unsummon.h"
 
 #endif // SPELLLIB_H
