@@ -44,7 +44,8 @@ inline std::unique_ptr<Card> createCard(const std::string &cardName, int playerN
   else if (cardName == "Dark Ritual")
     return std::make_unique<DarkRitual>(playerNum);
   // else if (cardName == "Aura of Power") return std::make_unique<AuraofPower>(playerNum);
-  // else if (cardName == "Standstill") return std::make_unique<Standstill>(playerNum);
+  else if (cardName == "Standstill")
+    return std::make_unique<Standstill>(playerNum);
 
   throw std::invalid_argument("Card not found: " + cardName);
 };

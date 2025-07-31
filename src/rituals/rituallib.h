@@ -3,6 +3,6 @@
 
 #include "darkritual.h"
 
-
+#include "standstill.h"
 
 #endif // RITUALLIB_H
