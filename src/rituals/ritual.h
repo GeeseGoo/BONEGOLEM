@@ -21,6 +21,10 @@ class Ritual: public Card {
     std::string getBottomRight() override;
     std::string getTopLeft() override;
     std::string getType() override {return "Ritual";}
+
+    int getCharges() const {return charges;}
+    void setCharges(int charges) {this->charges = charges;}
+    int getRitualCost() const {return ritualCost;}  
 };
 
 

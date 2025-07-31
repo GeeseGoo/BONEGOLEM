@@ -9,11 +9,15 @@
 class EndTurnTrigger: public Trigger {
 
   public:
-    EndTurnTrigger(std::unique_ptr<Ability>&& ability, Card* card): Trigger(std::move(ability), card) {};
+      int playerNum;
+    EndTurnTrigger(std::unique_ptr<Ability>&& ability, Card* card, int playerNum): Trigger(std::move(ability), card) , playerNum{playerNum} {};
     bool beTriggered(EndTurn* action, Board& board, Game& game) override {
-std::cout << "end turn triggered" << std::endl;
+      if(action->getPlayerNum() == playerNum){
+        std::cout << "end turn triggered" << std::endl;
         ability->activate(game, card, action, game.getPlayerIdx(),-1);
         return true;
+      }
+      return false;
     }
 };
 
