@@ -6,6 +6,7 @@
 #include "board.h"
 #include "graveyard.h"
 #include "lib.h"
+#include "globals.h"
 
 class Card;
 class Action;
@@ -73,13 +74,24 @@ public:
   bool deltaMagic(int m)
   {
     m *= -1;
-    if (magic + m < 0)
+    if (ISTEST)
     {
-      std::cout << "Out of magic; action aborted" << std::endl;
-      return false;
+      magic += m;
+      if (magic < 0)
+        magic = 0;
+      return true;
     }
-    magic += m;
-    return true;
+    else
+    {
+
+      if (magic + m < 0)
+      {
+        std::cout << "Out of magic; action aborted" << std::endl;
+        return false;
+      }
+      magic += m;
+      return true;
+    }
   }
 
   Hand &getHand()

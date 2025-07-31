@@ -70,8 +70,10 @@ void Controller::init(istream &in, string deck1Name, string deck2Name, bool isTe
   // give view access to the game
   view->assignGame(game.get());
   // shuffle decks
-  if(!testing){
-    for (Player &player : game->getPlayers()){
+  if (!testing)
+  {
+    for (Player &player : game->getPlayers())
+    {
       player.shuffle();
     }
   }
@@ -153,9 +155,12 @@ void Controller::play(istream &in)
       }
       if (tokens.size() == 4)
       {
-        if(tokens[3] == "r"){
+        if (tokens[3] == "r")
+        {
           game->action(make_unique<EnterPlay>(std::stoi(tokens[1]) - 1, std::stoi(tokens[2]) - 1, -1));
-        }else{
+        }
+        else
+        {
           game->action(make_unique<EnterPlay>(std::stoi(tokens[1]) - 1, std::stoi(tokens[2]) - 1, std::stoi(tokens[3]) - 1));
         }
       }
@@ -166,10 +171,14 @@ void Controller::play(istream &in)
       {
         game->action(make_unique<UseAbility>(std::stoi(tokens[1]) - 1, game->getPlayerIdx(), -1));
       }
-      if (tokens.size() == 4){
-        if(tokens[3] == "r"){
+      if (tokens.size() == 4)
+      {
+        if (tokens[3] == "r")
+        {
           game->action(make_unique<UseAbility>(std::stoi(tokens[1]) - 1, std::stoi(tokens[2]) - 1, -1));
-        }else{
+        }
+        else
+        {
           game->action(make_unique<UseAbility>(std::stoi(tokens[1]) - 1, std::stoi(tokens[2]) - 1, std::stoi(tokens[3]) - 1));
         }
         cout << "use" << endl;

@@ -3,6 +3,7 @@
 #include <iostream>
 #include <memory>
 #include <fstream>
+#include "globals.h"
 using namespace std;
 
 int main(int argc, char *argv[])
@@ -29,6 +30,7 @@ int main(int argc, char *argv[])
         if (string(argv[i]) == "-testing")
         {
             testing = true;
+            ISTEST = true;
         }
     }
 
