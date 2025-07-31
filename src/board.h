@@ -19,6 +19,10 @@ class Board
 public:
   void addCard(Minion *minion);
   void addCard(Ritual *r);
+  void addCard(std::unique_ptr<Minion> m)
+  {
+    minions.emplace_back(std::move(m));
+  }
   void trigger(Action *action, Game &game);
 
   Minion *getMinion(int i);
