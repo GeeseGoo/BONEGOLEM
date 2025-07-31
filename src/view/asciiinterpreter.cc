@@ -86,20 +86,14 @@ void AsciiInterpreter::displayHand(){
     }
 }
 
-void displayPlayer(Player& current, int index = -1){
+void displayPlayer(Player& current, int index = -1, bool reverse = false){
     vector<card_template_t> topRow = {};
     topRow.push_back(makeCardDisplay(current.getBoard().getRitual()));
     topRow.push_back(CARD_TEMPLATE_EMPTY);
     topRow.push_back(display_player_card_given(index, current.getName(), current.getHp(), current.getMagic()));
     topRow.push_back(CARD_TEMPLATE_EMPTY);
     topRow.push_back(makeCardDisplay(current.getGraveyard().top()));
-    for(unsigned int i = 0; i < topRow.at(0).size(); i++){
-        cout << EXTERNAL_BORDER_CHAR_UP_DOWN;
-        for(card_template_t card : topRow){
-            cout << card.at(i);
-        }
-        cout << EXTERNAL_BORDER_CHAR_UP_DOWN << endl;
-    }
+    
     vector<card_template_t> bottomRow = {};
     vector<Minion*> minions = current.getBoard().getMinions();
     for(unsigned int i = 0; i < 5; i++){
@@ -111,12 +105,30 @@ void displayPlayer(Player& current, int index = -1){
         }
         bottomRow.push_back(makeCardDisplay(card));
     }
+    if(!reverse){
+        for(unsigned int i = 0; i < topRow.at(0).size(); i++){
+            cout << EXTERNAL_BORDER_CHAR_UP_DOWN;
+            for(card_template_t card : topRow){
+                cout << card.at(i);
+            }
+            cout << EXTERNAL_BORDER_CHAR_UP_DOWN << endl;
+        }
+    }
     for(unsigned int i = 0; i < bottomRow.at(0).size(); i++){
         cout << EXTERNAL_BORDER_CHAR_UP_DOWN;
         for(card_template_t card : bottomRow){
             cout << card.at(i);
         }
         cout << EXTERNAL_BORDER_CHAR_UP_DOWN << endl;
+    }
+    if(reverse){
+        for(unsigned int i = 0; i < topRow.at(0).size(); i++){
+            cout << EXTERNAL_BORDER_CHAR_UP_DOWN;
+            for(card_template_t card : topRow){
+                cout << card.at(i);
+            }
+            cout << EXTERNAL_BORDER_CHAR_UP_DOWN << endl;
+        }
     }
 }
 
@@ -141,7 +153,7 @@ void AsciiInterpreter::displayBoard(){
     displayPlayer(players.at(0));
     for(unsigned int i=1; i < players.size(); i++){
         displayGraphic();
-        displayPlayer(players.at(i));
+        displayPlayer(players.at(i), -1, true);
     }
 
     cout << EXTERNAL_BORDER_CHAR_BOTTOM_LEFT;
