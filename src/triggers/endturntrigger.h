@@ -13,7 +13,7 @@ class EndTurnTrigger: public Trigger {
     EndTurnTrigger(std::unique_ptr<Ability>&& ability, Card* card, int playerNum): Trigger(std::move(ability), card) , playerNum{playerNum} {};
     bool beTriggered(EndTurn* action, Board& board, Game& game) override {
       if(action->getPlayerNum() == playerNum +1){
-        std::cout << "end turn triggered" << std::endl;
+        // std::cout << "end turn triggered" << std::endl;
         ability->activate(game, card, action, game.getPlayerIdx(),-1);
         return true;
       }

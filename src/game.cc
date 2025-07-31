@@ -16,7 +16,7 @@ Player &Game::getActivePlayer() {
 
 void Game::nextPlayer() {
   activePlayer = (activePlayer + 1) % playerCount;
-  cout << getActivePlayer().getName() << "'s Turn" << endl;
+  // cout << getActivePlayer().getName() << "'s Turn" << endl;
 }
 
 void Game::action(std::unique_ptr<Action> action) {

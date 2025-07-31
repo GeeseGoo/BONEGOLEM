@@ -83,7 +83,7 @@ void Enchantment::play(Game &game, Player &player, EnterPlay *action)
 {
     int index = action->getOnto();
     next = std::unique_ptr<Minion>(player.getBoard().attach(this, index));
-    std::cout << "Attached " << this->name << " onto " << this->getName() << std::endl;
+    // std::cout << "Attached " << this->name << " onto " << this->getName() << std::endl;
     onEquip();
 }
 
@@ -147,7 +147,7 @@ std::string Enchantment::getType()
 Enchantment::~Enchantment() {}
 
 bool Enchantment::deltaActions(int m) {
-    next->deltaActions(m);
+    return next->deltaActions(m);
 }
 
 void Enchantment::setActions(int a)

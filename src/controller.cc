@@ -127,19 +127,19 @@ void Controller::play(istream &in)
 
     if (tokens[0] == "quit")
     {
-      cout << "quit" << endl;
+      // cout << "quit" << endl;
       break;
     }
     if (tokens[0] == "draw" && testing)
     {
       game->getActivePlayer().draw();
-      cout << "draw" << endl;
+      // cout << "draw" << endl;
     }
     if (tokens[0] == "discard")
     {
       int index = std::stoi(tokens[1]);
       game->getActivePlayer().getHand().pop(index);
-      cout << "discard" << endl;
+      // cout << "discard" << endl;
     }
     if (tokens[0] == "attack")
     {
@@ -156,7 +156,7 @@ void Controller::play(istream &in)
     {
       if (tokens.size() == 2)
       {
-        std::cout << game->getPlayerIdx() << " is player";
+        // std::cout << game->getPlayerIdx() << " is player";
         game->action(make_unique<EnterPlay>(std::stoi(tokens[1]) - 1, game->getPlayerIdx(), -1));
       }
       if (tokens.size() == 4)
@@ -187,7 +187,7 @@ void Controller::play(istream &in)
         {
           game->action(make_unique<UseAbility>(std::stoi(tokens[1]) - 1, std::stoi(tokens[2]) - 1, std::stoi(tokens[3]) - 1));
         }
-        cout << "use" << endl;
+        // cout << "use" << endl;
       }
     }
     if (tokens[0] == "inspect")

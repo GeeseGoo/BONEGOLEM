@@ -21,7 +21,7 @@ class AllMinionBuff : public Ability
     }
     for (auto m : player->getBoard().getMinions())
     {
-      std::cout << "buffing minion " << m->getName() << std::endl;
+      // std::cout << "buffing minion " << m->getName() << std::endl;
       m->setAtk(m->getAtk() + atkBuff);
       m->takeDamage(-1 * defBuff);
     }

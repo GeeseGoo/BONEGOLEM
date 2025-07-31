@@ -52,7 +52,7 @@ void Minion::takeDamage(int dmg) {
   def -= dmg;
   if (def<= 0 && !isDead) {
     isDead = true;
-    std::cout << name << " is ded"<< std::endl;
+    std::cout << name << " has died!"<< std::endl;
     game->action(make_unique<KillMinion>(*this, game->getPlayers().at(playerNum)));
   }
 }

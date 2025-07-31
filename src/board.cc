@@ -27,7 +27,7 @@ Minion *Board::getMinion(int i)
 
 void Board::trigger(Action *action, Game &game)
 {
-    cout << "Cecking triggers" << endl;
+    // cout << "Cecking triggers" << endl;
     for (Minion *m : getMinions())
     {
         if (m && m->getTrigger())
@@ -68,7 +68,7 @@ void Board::detachAll(int index)
 {
     while (minions.at(index)->isEnchantment())
     {
-        std::cout << "removing enchantment: " << minions.at(index)->getName() << std::endl;
+        // std::cout << "removing enchantment: " << minions.at(index)->getName() << std::endl;
         detach(index);
     }
 }

@@ -14,7 +14,7 @@ public:
     if(!action->isMinion() || action->getPlayer() == exempt){
       return false;
     }
-    std::cout << "minion enter triggered" << std::endl;
+  // std::cout << "minion enter triggered" << std::endl;
     ability->activate(game, card, action, action->getPlayer(), game.getPlayers().at(action->getPlayer()).getBoard().getMinions().size()-1);
     return true;
   }
@@ -22,7 +22,7 @@ public:
     if(action->getPlayer() == exempt){
       return false;
     }
-    std::cout << "minion enter triggered" << std::endl;
+    // std::cout << "minion enter triggered" << std::endl;
     ability->activate(game, card, action, action->getPlayer(), game.getPlayers().at(action->getPlayer()).getBoard().getMinions().size()-1);
     return true;
   }

@@ -12,14 +12,14 @@ bool Hand::isHandFull() const
 
 Hand::Hand(Player *p) : playerNum{p->getNum()}
 {
-  cout << this << " Created hand for player " << p->getNum() << endl;
+  // cout << this << " Created hand for player " << p->getNum() << endl;
 };
 
 void Hand::add(string cardName)
 {
   if (isHandFull())
     return;
-  std::cout << this << " adding card to player " << playerNum << std::endl;
+  // std::cout << this << " adding card to player " << playerNum << std::endl;
   cards.emplace_back(createCard(cardName, playerNum));
 }
 

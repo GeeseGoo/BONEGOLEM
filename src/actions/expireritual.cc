@@ -5,7 +5,7 @@
 
 void ExpireRitual::execute(Game &game)
 {
-    std::cout << "removing ritual from board of player " << playerNum << std::endl;
+    // std::cout << "removing ritual from board of player " << playerNum << std::endl;
     game.getBoards().at(playerNum)->removeRitual();
 }
 

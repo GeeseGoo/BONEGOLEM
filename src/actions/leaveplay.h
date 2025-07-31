@@ -18,7 +18,7 @@ public:
   LeavePlay(Minion &minion, Board &board) : minion(minion), board(board) {}
   void execute(Game &game)
   {
-    std::cout << "removing minion from board: " << minion.getName() << std::endl;
+    // std::cout << "removing minion from board: " << minion.getName() << std::endl;
     board.removeMinion(minion);
   }
   bool checkTrigger(Trigger *trig, Board &board, Game &game) override

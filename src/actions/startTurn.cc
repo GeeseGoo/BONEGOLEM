@@ -17,7 +17,7 @@ void StartTurn::execute(Game &game)
     {
         playerRef.draw();
     }
-    std::cout << "NOT notifying start turn triggers" << std::endl;
+    // std::cout << "NOT notifying start turn triggers" << std::endl;
 };
 
 bool StartTurn::checkTrigger(Trigger *trig, Board &board, Game &game)

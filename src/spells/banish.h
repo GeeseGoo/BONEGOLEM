@@ -10,7 +10,7 @@ class Banish : public Spell
   vector<unique_ptr<Ability>> getAbilities(Game &game, Player &player, int onto)
   {
     vector<unique_ptr<Ability>> abilities;
-    std::cout << "onto is " << onto;
+    // std::cout << "onto is " << onto;
     abilities.push_back(std::make_unique<Destroy>());
     return abilities;
   }

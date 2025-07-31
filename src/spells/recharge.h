@@ -8,7 +8,7 @@
 class Recharge: public Spell {
     vector<unique_ptr<Ability>> getAbilities(Game& game, Player& player, int onto){
       vector<unique_ptr<Ability>> abilities;
-      std::cout << "onto is " << onto;
+      // std::cout << "onto is " << onto;
       abilities.push_back(std::make_unique<RitualBuff>(player.getNum(), 3));
       return abilities;
     } 

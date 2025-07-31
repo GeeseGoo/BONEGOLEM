@@ -11,7 +11,7 @@
 
 inline std::unique_ptr<Card> createCard(const std::string &cardName, int playerNum)
 {
-  std::cout << "Making card for player: " << playerNum << std::endl;
+  // std::cout << "Making card for player: " << playerNum << std::endl;
   if (cardName == "Air Elemental")
     return std::make_unique<AirElemental>(playerNum);
   else if (cardName == "Earth Elemental")
@@ -45,7 +45,7 @@ inline std::unique_ptr<Card> createCard(const std::string &cardName, int playerN
   else if (cardName == "Silence") return std::make_unique<Silence>(playerNum);
   else if (cardName == "Dark Ritual")
     return std::make_unique<DarkRitual>(playerNum);
-  // else if (cardName == "Aura of Power") return std::make_unique<AuraofPower>(playerNum);
+  else if (cardName == "Aura of Power") return std::make_unique<AuraOfPower>(playerNum);
   else if (cardName == "Standstill")
     return std::make_unique<Standstill>(playerNum);
 

@@ -11,7 +11,7 @@ public:
   bool beTriggered(UseAbility *action, Board &board, Game &game) override
   {
     if(action->getUser() == card){
-      std::cout << "ability triggered" << std::endl;
+      // std::cout << "ability triggered" << std::endl;
       ability->activate(game, card, action, action->getPlayer(), action->getOnto());
       return true;
     }

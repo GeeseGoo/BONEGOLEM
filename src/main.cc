@@ -11,7 +11,8 @@ int main(int argc, char *argv[])
     AsciiInterpreter v; // View subclass
     Controller c(&v);
     string initFile;
-    string deck1, deck2 = "default.deck";
+    string deck1 = "default.deck";
+    string deck2 = "default.deck";
     bool testing = false;
     for (int i = 1; i < argc; i++)
     {

@@ -10,13 +10,13 @@ bool Player::isHandFull() {
 
 void Player::draw() {
   auto card = deck.draw();
-  std::cout << name << " draws "<< card<<" from their deck" << std::endl;
+  // std::cout << name << " draws "<< card<<" from their deck" << std::endl;
   hand->add(card);
 }
 
 
 void Player::shuffle() {
-        std::cout << "Shuffling " << name << "'s Deck" << std::endl;
+        // std::cout << "Shuffling " << name << "'s Deck" << std::endl;
       deck.shuffle();
 }
 
