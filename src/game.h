@@ -19,19 +19,24 @@ class Game
 public:
   Game(std::string p1, std::string p2, std::vector<std::string> deck1, std::vector<std::string> deck2);
   Player &getActivePlayer();
-  int getPlayerNum() {
+  int getPlayerNum()
+  {
     return activePlayer + 1;
   };
-  int getPlayerIdx() {
+  int getPlayerIdx()
+  {
     return activePlayer;
   }
-  int getInactivePlayerIdx() {
+  int getInactivePlayerIdx()
+  {
     return (activePlayer + 1) % playerCount;
   }
-  Player &getInactivePlayer() {
+  Player &getInactivePlayer()
+  {
     return players[(activePlayer + 1) % playerCount];
   };
-  std::vector<Player> &getPlayers() {
+  std::vector<Player> &getPlayers()
+  {
     return players;
   };
   void nextPlayer();
@@ -41,7 +46,7 @@ public:
   Minion *getCurrentMinion(int index);
   Hand *getCurrentHand();
   vector<Board *> getBoards();
-  void trigger(Action* action);
+  void trigger(Action *action);
 };
 
 #endif // GAME_H
