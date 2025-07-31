@@ -39,6 +39,6 @@ Card *UseAbility::getUser() const
 }
 
 void UseAbility::act(Game& game) {
-    game.trigger(this);
     execute(game);
+    game.trigger(this);
 }

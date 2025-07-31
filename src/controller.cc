@@ -77,7 +77,13 @@ void Controller::init(istream &in, string deck1Name, string deck2Name, bool isTe
       player.shuffle();
     }
   }
+  // call this a bunch so each player starts with 5 cards
+  for(int i = 0; i < 8; i++){
+    game->action(make_unique<StartTurn>());
+    game->action(make_unique<EndTurn>());
+  }
   game->action(make_unique<StartTurn>());
+
 }
 
 // start the main game loop

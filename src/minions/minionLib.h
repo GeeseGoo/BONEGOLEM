@@ -6,6 +6,7 @@
 #include "potionseller.h"
 #include "bonegolem.h"
 #include "fireelemental.h"
+#include "novicepyromancer.h"
 #include "apprenticesummoner.h"
 
 #endif // MINIONLIB_H
