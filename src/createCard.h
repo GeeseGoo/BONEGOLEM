@@ -22,7 +22,7 @@ inline std::unique_ptr<Card> createCard(const std::string &cardName, int playerN
     return std::make_unique<FireElemental>(playerNum);
   else if (cardName == "Potion Seller")
     return std::make_unique<PotionSeller>(playerNum);
-  // else if (cardName == "Novice Pyromancer") return std::make_unique<NovicePyromancer>(playerNum);
+  else if (cardName == "Novice Pyromancer") return std::make_unique<NovicePyromancer>(playerNum);
   else if (cardName == "Apprentice Summoner")
     return std::make_unique<ApprenticeSummoner>(playerNum);
   // else if (cardName == "Master Summoner") return std::make_unique<MasterSummoner>(playerNum);
