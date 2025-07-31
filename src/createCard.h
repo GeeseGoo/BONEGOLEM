@@ -18,21 +18,25 @@ inline std::unique_ptr<Card> createCard(const std::string &cardName, int playerN
     return std::make_unique<EarthElemental>(playerNum);
   else if (cardName == "Bone Golem")
     return std::make_unique<BoneGolem>(playerNum);
-  else if (cardName == "Fire Elemental") 
+  else if (cardName == "Fire Elemental")
     return std::make_unique<FireElemental>(playerNum);
   else if (cardName == "Potion Seller")
     return std::make_unique<PotionSeller>(playerNum);
   // else if (cardName == "Novice Pyromancer") return std::make_unique<NovicePyromancer>(playerNum);
-  else if (cardName == "Apprentice Summoner") return std::make_unique<ApprenticeSummoner>(playerNum);
+  else if (cardName == "Apprentice Summoner")
+    return std::make_unique<ApprenticeSummoner>(playerNum);
   // else if (cardName == "Master Summoner") return std::make_unique<MasterSummoner>(playerNum);
-  else if (cardName == "Banish") return std::make_unique<Banish>(playerNum);
-  // else if (cardName == "Unsummon") return std::make_unique<Unsummon>(playerNum);
+  else if (cardName == "Banish")
+    return std::make_unique<Banish>(playerNum);
+  else if (cardName == "Unsummon")
+    return std::make_unique<Unsummon>(playerNum);
   // else if (cardName == "Recharge") return std::make_unique<Recharge>(playerNum);
   // else if (cardName == "Disenchant") return std::make_unique<Disenchant>(playerNum);
   // else if (cardName == "Raise Dead") return std::make_unique<RaiseDead>(playerNum);
   else if (cardName == "Blizzard")
     return std::make_unique<Blizzard>(playerNum);
-  else if (cardName == "Giant Strength") return std::make_unique<GiantStrength>(playerNum);
+  else if (cardName == "Giant Strength")
+    return std::make_unique<GiantStrength>(playerNum);
   // else if (cardName == "Magic Fatigue") return std::make_unique<MagicFatigue>(playerNum);
   // else if (cardName == "Silence") return std::make_unique<Silence>(playerNum);
   else if (cardName == "Dark Ritual")
