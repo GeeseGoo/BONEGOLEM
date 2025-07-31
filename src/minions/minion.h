@@ -30,10 +30,10 @@ public:
   virtual void setAtk(int val) { atk = val; }
   virtual void setDef(int val) { def = val; }
   virtual int getActions() const { return actions; }
-  bool deltaActions(int m)
+  virtual bool deltaActions(int m)
   {
     m *= -1;
-    if (actions + m < 0)
+    if (getActions() + m < 0)
     {
       std::cout << "Out of actions; action aborted" << std::endl;
       return false;
@@ -41,7 +41,7 @@ public:
     actions += m;
     return true;
   }
-  void setActions(int a)
+  virtual void setActions(int a)
   {
     actions = a;
   };

@@ -30,7 +30,7 @@ class Card {
     virtual std::string getTopLeft() = 0;
     virtual std::string description() = 0;
     virtual std::string getType() = 0;
-    Trigger* getTrigger();
+    virtual Trigger* getTrigger();
 };
 
 

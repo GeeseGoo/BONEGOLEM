@@ -145,3 +145,17 @@ std::string Enchantment::getType()
 }
 
 Enchantment::~Enchantment() {}
+
+bool Enchantment::deltaActions(int m) {
+    next->deltaActions(m);
+}
+
+void Enchantment::setActions(int a)
+{
+next->setActions(a);
+};
+
+Trigger* Enchantment::getTrigger(){
+    return next->getTrigger();
+}
+

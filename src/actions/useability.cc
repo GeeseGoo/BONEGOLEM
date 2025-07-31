@@ -11,9 +11,10 @@ void UseAbility::execute(Game &game) {
         return;
     }
     
-    if (!game.getPlayers().at(player).getBoard().getMinion(cardID)->deltaActions(1))
+    if (!game.getPlayers().at(player).getBoard().getMinion(cardID)->deltaActions(1)){
         game.getPlayers().at(player).setMagic(oldMagic);
         return;
+    }
 
     validUse = true;
     user = game.getPlayers().at(player).getBoard().getMinion(cardID);

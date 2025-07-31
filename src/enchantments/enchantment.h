@@ -22,6 +22,10 @@ public:
   virtual std::string enchantmentBottomRight();
   virtual std::string enchantmentDescription();
   virtual std::string enchantmentName();
+  virtual bool deltaActions(int m);
+  virtual void setActions(int a);
+  virtual Trigger* getTrigger() override;
+
 
   int enchantmentCost();
   virtual void onEquip();
@@ -48,6 +52,7 @@ public:
   std::string getName() override;
   int getCost() override;
   std::string getType() override;
+  
 };
 
 #endif // ENCHANTMENT_H

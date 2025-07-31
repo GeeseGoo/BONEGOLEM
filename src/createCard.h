@@ -39,8 +39,10 @@ inline std::unique_ptr<Card> createCard(const std::string &cardName, int playerN
     return std::make_unique<Blizzard>(playerNum);
   else if (cardName == "Giant Strength")
     return std::make_unique<GiantStrength>(playerNum);
-  // else if (cardName == "Magic Fatigue") return std::make_unique<MagicFatigue>(playerNum);
-  // else if (cardName == "Silence") return std::make_unique<Silence>(playerNum);
+  else if (cardName == "Enrage") return std::make_unique<Enrage>(playerNum);
+  else if (cardName == "Haste") return std::make_unique<Haste>(playerNum);
+  else if (cardName == "Magic Fatigue") return std::make_unique<MagicFatigue>(playerNum);
+  else if (cardName == "Silence") return std::make_unique<Silence>(playerNum);
   else if (cardName == "Dark Ritual")
     return std::make_unique<DarkRitual>(playerNum);
   // else if (cardName == "Aura of Power") return std::make_unique<AuraofPower>(playerNum);
