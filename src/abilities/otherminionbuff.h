@@ -18,14 +18,9 @@ class OtherMinionBuff : public Ability
     int defBuff;
 
     void execute(Game &game, Card *card, Action *action, int player, int onto) override {
-      if(onto >= 0){
         Minion* triggeringCard = game.getPlayers().at(player).getBoard().getMinion(onto);
         triggeringCard->setAtk(triggeringCard->getAtk() + atkBuff);
         triggeringCard->takeDamage(-1 * defBuff);
-      }
-      else{
-        // apply to ritual?
-      }
     }
   public:
     OtherMinionBuff(int atkBuff, int defBuff) : atkBuff(atkBuff), defBuff(defBuff) {};

@@ -6,5 +6,6 @@
 #include "unsummon.h"
 #include "disenchant.h"
 #include "raisedead.h"
+#include "recharge.h"
 
 #endif // SPELLLIB_H
