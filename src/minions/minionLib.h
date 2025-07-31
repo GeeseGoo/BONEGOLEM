@@ -8,5 +8,6 @@
 #include "fireelemental.h"
 #include "novicepyromancer.h"
 #include "apprenticesummoner.h"
+#include "mastersummoner.h"
 
 #endif // MINIONLIB_H
