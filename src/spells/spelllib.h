@@ -5,5 +5,6 @@
 #include "banish.h"
 #include "unsummon.h"
 #include "disenchant.h"
+#include "raisedead.h"
 
 #endif // SPELLLIB_H

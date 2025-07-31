@@ -5,11 +5,18 @@
 #include <memory>
 class Card;
 class Minion;
-class Graveyard {
+class Graveyard
+{
   std::stack<std::unique_ptr<Minion>> cards;
-  public:
-    void add(Minion* card);
-    Minion* pop(int); // not implemented currently
-    Minion* top(); // may also want to change this to return Minion*
+
+public:
+  void add(Minion *card);
+  std::unique_ptr<Minion> pop()
+  {
+    std::unique_ptr<Minion> minion = std::move(cards.top());
+    cards.pop();
+    return minion;
+  }
+  Minion *top(); // may also want to change this to return Minion*
 };
 #endif // HAND_H
