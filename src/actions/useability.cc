@@ -38,9 +38,7 @@ Card *UseAbility::getUser() const
     return user;
 }
 
-void UseAbility::act(Game& game){
-    // We want to swap these here so we can manage the player magic and get player info first
-    execute(game);
+void UseAbility::act(Game& game) {
     game.trigger(this);
+    execute(game);
 }
-

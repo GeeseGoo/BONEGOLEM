@@ -25,6 +25,7 @@ public:
   {
     return trig->beTriggered(this, board, game);
   }
+  void act(Game& game) override;
 };
 
 #endif // LEAVEPLAY_H

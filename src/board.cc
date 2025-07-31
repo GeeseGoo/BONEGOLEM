@@ -33,8 +33,11 @@ void Board::trigger(Action *action, Game &game)
         if (m && m->getTrigger())
             m->getTrigger()->trigger(action, *this, game);
     }
-    if (ritual && ritual->getTrigger())
-        ritual->getTrigger()->trigger(action, *this, game);
+    if (ritual && ritual->getTrigger() && ritual->getCharges() >= ritual->getRitualCost()) {
+        if(ritual->getTrigger()->trigger(action, *this, game)){
+            ritual->setCharges(ritual->getCharges() - ritual->getRitualCost());
+        }
+    }
 }
 
 std::vector<Minion *> Board::getMinions()
