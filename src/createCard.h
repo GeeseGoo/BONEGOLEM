@@ -31,7 +31,8 @@ inline std::unique_ptr<Card> createCard(const std::string &cardName, int playerN
   else if (cardName == "Unsummon")
     return std::make_unique<Unsummon>(playerNum);
   // else if (cardName == "Recharge") return std::make_unique<Recharge>(playerNum);
-  // else if (cardName == "Disenchant") return std::make_unique<Disenchant>(playerNum);
+  else if (cardName == "Disenchant")
+    return std::make_unique<Disenchant>(playerNum);
   // else if (cardName == "Raise Dead") return std::make_unique<RaiseDead>(playerNum);
   else if (cardName == "Blizzard")
     return std::make_unique<Blizzard>(playerNum);
