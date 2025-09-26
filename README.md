@@ -183,7 +183,7 @@ Final Questions
 
 ## Lessons Learnt
 1. What lessons did this project teach you about developing software in teams? If you worked alone, what lessons did you learn about writing large programs?
-2. 
+
 Charles: 
 Dividing up tasks is something that I didn’t think was so difficult and so important. We had a lot of issues with merge conflicts because the tasks we assigned to each other were not separate enough and touched the same files.
 
@@ -191,7 +191,7 @@ Jack
 It is very important to make sure that everyone has a clear vision of how the end product will work before programming actually begins. When we first started working together, I found that I had not explained myself as well as I had hoped, and took some implementations for granted, which caused us to have to rewrite much of our original code.
 
 3. What would you have done differently if you had the chance to start over?
-4. 
+
 Charles:
 I would have tried to implement a scaffold of the code while we were making the UML diagram. It’s easy to gloss over details in implementation when making the diagram, and we made some design choices that were impractical or impossible to do in C++. Some of these could only be fixed using dynamic casting, which we plan to refactor in the future.
 
